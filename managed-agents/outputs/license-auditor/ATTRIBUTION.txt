@@ -1,0 +1,26 @@
+--- AUDIO CREDITS & LICENSING ATTRIBUTION ---
+
+[MANDATORY ATTRIBUTION - CREATIVE COMMONS ATTRIBUTION 3.0]
+- "Stream Sounds" by kurt (https://opengameart.org/content/stream-sounds), licensed under Creative Commons Attribution 3.0 Unported (https://creativecommons.org/licenses/by/3.0/). Audio was edited and mixed into the trailer sound design.
+
+[COMMERCIAL ASSET ACKNOWLEDGEMENTS]
+- Cliffs & Rock 3D Assets: "Godot Cliffs & Rocks Asset Pack 1" by Kasper Arnklit (https://arnklit.itch.io/godot-rock-asset-pack1), used under Commercial Royalty-Free License.
+- 3D Tree Vegetation: "Archmodels vol. 283" © Evermotion (https://evermotion.org), used under Evermotion Commercial EULA for rendered video.
+- 3D Grass Assets: "HyperGrass Vol. 1 Wild Green" by Greg Zdunek (https://www.artstation.com/marketplace/p/qDv3/hypergrass-vol-1-wild-green-realistic-3d-grass-collection), used under ArtStation Commercial License.
+
+[COMMUNITY 3D & TEXTURE CREDITS (CC0-1.0 PUBLIC DOMAIN)]
+- Character Models: "Universal Base Characters" by Quaternius (https://quaternius.itch.io/universal-base-characters / https://quaternius.com), licensed under CC0 1.0 Universal.
+- Nature 3D Models & PBR Textures: "Fern 02", "Grass Medium 01", and "Namaqualand Boulders" by Poly Haven (https://polyhaven.com), licensed under CC0 1.0 Universal.
+
+[WILDLIFE & FOLEY AUDIO RECORDINGS (CC0-1.0 PUBLIC DOMAIN)]
+- Bird Calls courtesy of iNaturalist community members (licensed under CC0 1.0):
+  * Mountain Chickadee (Poecile gambeli) recorded by sardinemachine (Obs #392928456) and whiteoak (Obs #301369695)
+  * Canyon Wren (Catherpes mexicanus) recorded by caitlincornwall (Obs #263552965)
+  * Steller's Jay (Cyanocitta stelleri) recorded by ben142 (Obs #408572176) and saintaardvark (Obs #407317418)
+- Wind & Foley sounds courtesy of Freesound.org contributors (licensed under CC0 1.0):
+  * Wind through pines: silencyo (#81797), nicotep (#843927)
+  * Footsteps on gravel and wood: Ali_6868 (#384880), Nox_Sound (#556002), SpliceSound (#148802, #369838)
+
+[SYNTHETIC & AI MEDIA DISCLOSURE]
+- Musical score ("Sierra Conifer") generated using Google DeepMind Lyria 3.5 via Gemini API.
+- Procedural environmental audio bed ("Sierra Alpine Dusk") created by the THRU production team.

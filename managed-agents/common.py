@@ -3,7 +3,7 @@ from google import genai
 BASE = os.path.expanduser("~/cs-audit/gemini-hackathon/managed-agents")
 RUNS = os.path.join(BASE, "RUNS.jsonl")
 _lock = threading.Lock()
-client = genai.Client()  # key comes from env (sourced), never printed
+client = genai.Client() if (os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")) else None  # key from sourced env, never printed
 
 def dump(o):
     try: return o.model_dump(mode="json", exclude_none=True)

@@ -2,7 +2,7 @@
 
 **Gemini 4 Argon SF hackathon (Cerebral Valley), Problem Statement Two: "More Dimensions"**
 
-This is an autonomous **render → watch → critique → fix** loop. It builds a photoreal Pacific Crest Trail creek scene in **Unreal Engine 5.6** on cloud GPUs. After each render, **gemini-4-argon** looks at the Unreal stills next to **real photos of Sierra Nevada creeks**, scores every shot, and returns a list of concrete fixes. The orchestrator (gemini-4-argon driving the `pi` coding agent on the GPU pod) applies those fixes to the scene parameters and code, renders again, and scores the new render. **Gemini Managed Agents** (an art director and an asset librarian) do research inside sandboxes: they find licensed reference photos and turn the critique into UE5 task lists.
+This is an autonomous **render → watch → critique → fix** loop. It builds a photoreal Pacific Crest Trail creek scene in **Unreal Engine 5.6** on cloud GPUs. After each render, **gemini-4-argon** looks at the Unreal stills next to **real photos of Sierra Nevada creeks**, scores every shot, and returns a list of concrete fixes. The orchestrator (gemini-4-argon driving the `pi` coding agent on the GPU pod) applies those fixes to the scene parameters and code, renders again, and scores the new render. **Gemini Managed Agents** (an art director, an asset librarian, and a license auditor) do research inside sandboxes: they find licensed reference photos and turn the critique into UE5 task lists.
 
 **Who it's for:** indie game developers and world builders who want a scene to look like a real place without an art director standing over every iteration. You give the loop a goal and some real photos. It renders, checks itself against the photos, fixes what's wrong, and runs again.
 
@@ -63,6 +63,15 @@ A live demo run of `demo/run_loop.sh` (fallback mode, Oct 25 at 15:38 PT) re-sco
 
 Godot (top) vs Unreal (bottom): ![](docs/compare/side-by-side.jpg)
 
+## Gemini Managed Agents
+
+[`managed-agents/SHOWCASE.md`](managed-agents/SHOWCASE.md) has the full write-up. Three named agents persist by ID. Each one is defined once in `setup_agents.py`, has its own system instruction and a mounted `SKILL.md`, and runs on base agent `antigravity-preview-09-2026` with model `gemini-3.8-flash`:
+- `thru-art-director` compares the real UE stills against CC-licensed Sierra photos it finds itself and writes [`FIXES.md`](managed-agents/outputs/art-director/FIXES.md). On its second turn it reuses the same sandbox (`environment_id`) and turns that file into a machine-readable UE5 task list, [`FIXES-TASKS.json`](managed-agents/outputs/art-director/FIXES-TASKS.json). `ma_critic_hook.py` chains new renders into that persistent sandbox.
+- `thru-asset-librarian` made 18 parallel section-by-section research jobs plus 1 gap analysis, and produced [`COVERAGE.md`](managed-agents/outputs/asset-librarian/COVERAGE.md).
+- `thru-license-auditor` writes [`LICENSE-AUDIT.md`](managed-agents/outputs/license-auditor/LICENSE-AUDIT.md) and `ATTRIBUTION.txt`.
+
+As of 15:52 PT: 23 interactions, all completed, across 21 sandboxes and about 56.6M tokens.
+
 ## Live demo (judges)
 
 ```bash
@@ -82,7 +91,7 @@ One full cycle using real inputs: real UE5 stills plus real Sierra creek photos 
 | `landscape/` | UE exporters and loaders: heightmap, creek spline and bridge, placements and cameras (raw heightmaps and GLBs left out) |
 | `systems/` | THRU gameplay systems ported to UE Python: trail-follow camera/locomotion, footstep surfaces, time of day, audio ambience, with specs and keyframe data |
 | `route/` | Hero route and path JSON that drives the walk |
-| `managed-agents/` | Gemini Managed Agents: `setup_agents.py`, `AGENTS.json` (art director, asset librarian, license auditor), `run_*.py`, `make_showcase.py` |
+| `managed-agents/` | Gemini Managed Agents: `setup_agents.py`, `AGENTS.json`, `run_*.py`, `ma_critic_hook.py`, `SHOWCASE.md`, `outputs/` (FIXES, task list, coverage, license audit) |
 | `swarm/` | Swarm tooling: `pilane/` (pi + Argon lanes on CPU pods), `fleetq/` (GPU/CPU job queue and fleet monitor), `prompts/` (lane prompts and launchers) |
 | `demo/` | `run_loop.sh` and `critic_fix.py`, plus saved real UE renders `renders/iter1`, `renders/iter2` |
 | `docs/` | Progression stills, Unreal journal, switch log, Godot-vs-Unreal scoring |

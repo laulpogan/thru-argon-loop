@@ -1,0 +1,200 @@
+[
+  {
+    "id": "P0-01",
+    "priority": "P0",
+    "target": "asset",
+    "ue_object": "BP_TrailBridge",
+    "parameter": "StaticMesh",
+    "current_guess": "SM_SuburbanPedestrianBridge_BrownPainted (machine-planed 2x4 lumber handrails)",
+    "target_value": "SM_USFS_LogStringerBridge (two 45cm debarked lodgepole pine log stringers with 4x10in rough-sawn planks and single-sided peeled pole handrail)",
+    "reference_url": "https://commons.wikimedia.org/wiki/File:Thousand_Island_Lake_bridge.jpg",
+    "expected_score_gain": 1.6
+  },
+  {
+    "id": "P0-02",
+    "priority": "P0",
+    "target": "material",
+    "ue_object": "MI_Bridge_Timber",
+    "parameter": "BaseColor_Roughness",
+    "current_guess": "BaseColor sRGB [0.45, 0.25, 0.19], Roughness 0.50 (flat painted municipal brown lumber)",
+    "target_value": "BaseColor sRGB [0.40, 0.38, 0.35], Roughness 0.85, normal map with deep longitudinal weather cracks and oxidized iron drift pins",
+    "reference_url": "https://commons.wikimedia.org/wiki/File:Bridge_over_Bridalveil_Creek_along_the_Pohono_Trail_-_panoramio.jpg",
+    "expected_score_gain": 0.6
+  },
+  {
+    "id": "P0-03",
+    "priority": "P0",
+    "target": "asset",
+    "ue_object": "SM_BridgeAbutments",
+    "parameter": "StaticMesh_and_Material",
+    "current_guess": "Vertical planar extruded wall geometry textured with vertically stretched decorative stone tile cladding",
+    "target_value": "Nanite dry-stacked granite slab rock cribbing (SM_Granite_RockCribbing) keyed directly into natural bedrock shelves",
+    "reference_url": "https://commons.wikimedia.org/wiki/File:Thousand_Island_Lake_bridge.jpg",
+    "expected_score_gain": 1.0
+  },
+  {
+    "id": "P0-04",
+    "priority": "P0",
+    "target": "foliage",
+    "ue_object": "PCG_RiparianVegetation",
+    "parameter": "MeshList_Purge",
+    "current_guess": "Tropical / indoor houseplant broadleaf meshes (Monstera / broadleaf fern clumps) placed on granite abutments",
+    "target_value": "Purge 100% of tropical broadleaf meshes; restrict species list to native subalpine flora (Carex sedges, Deschampsia cespitosa, Salix eastwoodiae)",
+    "reference_url": "https://commons.wikimedia.org/wiki/File:Tuolumne_Meadows_-_Lyell_Fork_of_the_Tuolumne_River_-_06.JPG",
+    "expected_score_gain": 0.9
+  },
+  {
+    "id": "P0-05",
+    "priority": "P0",
+    "target": "foliage",
+    "ue_object": "FoliageType_CarexSedge",
+    "parameter": "Density_and_Material",
+    "current_guess": "0 instances of subalpine sedges; bare rock / straw mulch transition at stream edge",
+    "target_value": "25-40 clumps/m2 along stream margins (0-1.5m buffer); Two-Sided Foliage Material with golden cured tips sRGB [0.46, 0.38, 0.18], green base sRGB [0.25, 0.32, 0.14], SSS Opacity 0.45",
+    "reference_url": "https://commons.wikimedia.org/wiki/File:Tuolumne_Meadows_-_Lyell_Fork_of_the_Tuolumne_River_-_06.JPG",
+    "expected_score_gain": 0.8
+  },
+  {
+    "id": "P0-06",
+    "priority": "P0",
+    "target": "asset",
+    "ue_object": "BP_PlayerCharacter",
+    "parameter": "SkeletalMesh_and_Gear",
+    "current_guess": "Quaternius stylized untextured nude mannequin with bare feet running empty-handed",
+    "target_value": "Rigged MetaHuman athletic thru-hiker wearing UPF sun hoody, nylon shorts, trail runners with DG dust vertex paint, 50L ultralight roll-top pack, BearVault BV500, Z-Lite pad, and dual trekking poles",
+    "reference_url": "https://commons.wikimedia.org/wiki/File:PCT_Thru-Hikers_(5038335800).jpg",
+    "expected_score_gain": 1.8
+  },
+  {
+    "id": "P0-07",
+    "priority": "P0",
+    "target": "asset",
+    "ue_object": "SM_BackgroundMountains",
+    "parameter": "StaticMesh",
+    "current_guess": "Visible low-poly faceted sphere dome / untextured polygonal backdrop mesh",
+    "target_value": "Nanite mountain terrain generated from USGS 1m LiDAR/DEM (Ritter/Cathedral range batholith) with granodiorite rock shader and talus slopes",
+    "reference_url": "https://commons.wikimedia.org/wiki/File:Thousand_Island_Lake_bridge.jpg",
+    "expected_score_gain": 0.7
+  },
+  {
+    "id": "P1-01",
+    "priority": "P1",
+    "target": "material",
+    "ue_object": "MI_Water_Creek",
+    "parameter": "Shading_and_Translucency",
+    "current_guess": "Opaque brown plane with generic horizontal sinusoidal ripples, zero depth transparency, zero bank interaction",
+    "target_value": "Surface Forward Shading (Lumen HQ Translucency), IOR 1.333, Absorption [0.45, 0.12, 0.04], Scattering [0.08, 0.32, 0.40] for crystal snowmelt transitioning to teal pools",
+    "reference_url": "https://commons.wikimedia.org/wiki/File:Tuolumne_Meadows_-_Lyell_Fork_of_the_Tuolumne_River_-_06.JPG",
+    "expected_score_gain": 0.9
+  },
+  {
+    "id": "P1-02",
+    "priority": "P1",
+    "target": "material",
+    "ue_object": "MI_Water_Creek",
+    "parameter": "DistanceFieldFoam_and_Flow",
+    "current_guess": "Zero flow vectors; zero foam around rocks and bridge abutments",
+    "target_value": "Dual-layer directional flow normal (Swell scale 250 speed 0.06; Chatter scale 40 speed 0.22); DistanceToNearestSurface dynamic foam lips at boulders (Albedo sRGB [0.94, 0.95, 0.95], Roughness 0.25)",
+    "reference_url": "https://commons.wikimedia.org/wiki/File:Tuolumne_River_Dana_Fork2.jpg",
+    "expected_score_gain": 0.6
+  },
+  {
+    "id": "P1-03",
+    "priority": "P1",
+    "target": "material",
+    "ue_object": "MI_SierraGranite_Bedrock",
+    "parameter": "BaseColor_and_Roughness",
+    "current_guess": "BaseColor sRGB [0.28, 0.25, 0.22] (dark mud-brown), Roughness 0.55, smooth river cobble normals",
+    "target_value": "BaseColor sRGB [0.48, 0.49, 0.47] (linear 0.19, 0.20, 0.18, desaturated light granodiorite), Roughness 0.75-0.85, biotite flake micro-normal and 10cm exfoliation sheet peeling normals",
+    "reference_url": "https://commons.wikimedia.org/wiki/File:Ansel_Adams_Wilderness_River.JPG",
+    "expected_score_gain": 0.8
+  },
+  {
+    "id": "P1-04",
+    "priority": "P1",
+    "target": "material",
+    "ue_object": "MI_SierraGranite_Bedrock",
+    "parameter": "Lichen_Triplanar_Layer",
+    "current_guess": "0% lichen coverage; bare monochromatic rock surface",
+    "target_value": "Tri-planar projection of crustose Rhizocarpon geographicum (chartreuse sRGB [0.36, 0.42, 0.15], Roughness 0.92) on World Normal Z 0.40-0.95 (20-30% rock surface coverage)",
+    "reference_url": "https://commons.wikimedia.org/wiki/File:Tuolumne_Meadows_-_Lyell_Fork_of_the_Tuolumne_River_-_06.JPG",
+    "expected_score_gain": 0.5
+  },
+  {
+    "id": "P1-05",
+    "priority": "P1",
+    "target": "material",
+    "ue_object": "MI_Landscape_Terrain",
+    "parameter": "RVT_Layer_DecomposedGranite",
+    "current_guess": "Monolithic straw-thatch mulch / hamster bedding texture covering all terrain",
+    "target_value": "Layer 1 Decomposed Granite (DG) coarse sand and quartz grus (BaseColor sRGB [0.44, 0.39, 0.33], Roughness 0.88, embedded 5-15mm gravel normal)",
+    "reference_url": "https://commons.wikimedia.org/wiki/File:Ansel_Adams_Wilderness_River.JPG",
+    "expected_score_gain": 0.8
+  },
+  {
+    "id": "P1-06",
+    "priority": "P1",
+    "target": "material",
+    "ue_object": "MI_Landscape_Terrain",
+    "parameter": "RVT_Layer_PineNeedleDuff",
+    "current_guess": "Zero needle duff; uniform straw texture extends under tree canopies",
+    "target_value": "Layer 2 Pine Needle Duff (BaseColor sRGB [0.22, 0.16, 0.11], Roughness 0.92) projected automatically beneath conifer tree bounding boxes via distance-to-canopy mask",
+    "reference_url": "https://commons.wikimedia.org/wiki/File:Bridge_over_Bridalveil_Creek_along_the_Pohono_Trail_-_panoramio.jpg",
+    "expected_score_gain": 0.5
+  },
+  {
+    "id": "P1-07",
+    "priority": "P1",
+    "target": "material",
+    "ue_object": "MI_Landscape_Terrain",
+    "parameter": "RVT_Layer_PCTTrailTread",
+    "current_guess": "Airbrushed glowing reddish-orange clay paint (BaseColor sRGB [0.78, 0.42, 0.18]) with blurry boundaries",
+    "target_value": "Layer 3 Compacted DG gravel tread (BaseColor sRGB [0.40, 0.36, 0.30], Roughness 0.82) with 10-15cm central foot-traffic cupping and scree berm transitions; zero orange clay",
+    "reference_url": "https://commons.wikimedia.org/wiki/File:PCT_Thru-Hikers_(5038335800).jpg",
+    "expected_score_gain": 0.7
+  },
+  {
+    "id": "P1-08",
+    "priority": "P1",
+    "target": "foliage",
+    "ue_object": "FoliageType_LodgepolePine",
+    "parameter": "StaticMesh_and_Materials",
+    "current_guess": "Chaotic brown twig card brushes with dark telephone-pole trunks and no root collar",
+    "target_value": "Nanite Lodgepole Pine (Pinus contorta subsp. murrayana) (75k tris, thin scaly orange-grey bark sRGB [0.30, 0.26, 0.22], paired short needles with SSS Color sRGB [0.32, 0.40, 0.16], flared root base)",
+    "reference_url": "https://commons.wikimedia.org/wiki/File:Tuolumne_Meadows_-_Lyell_Fork_of_the_Tuolumne_River_-_06.JPG",
+    "expected_score_gain": 1.0
+  },
+  {
+    "id": "P1-09",
+    "priority": "P1",
+    "target": "foliage",
+    "ue_object": "FoliageType_JeffreyPine",
+    "parameter": "StaticMesh_and_Materials",
+    "current_guess": "0 Jeffrey pine specimens in scene; uniform low-quality conifer clone instances",
+    "target_value": "Nanite Jeffrey Pine (Pinus jeffreyi) specimen trees (DBH 1.2-1.8m, jigsaw cinnamon bark plates sRGB [0.38, 0.24, 0.16] with deep charcoal furrows, long 3-needle pendulous tufts)",
+    "reference_url": "https://commons.wikimedia.org/wiki/File:Bridge_over_Bridalveil_Creek_along_the_Pohono_Trail_-_panoramio.jpg",
+    "expected_score_gain": 0.7
+  },
+  {
+    "id": "P1-10",
+    "priority": "P1",
+    "target": "lighting",
+    "ue_object": "DirectionalLight_Sun",
+    "parameter": "Illuminance_and_Temperature",
+    "current_guess": "Flat uncalibrated directional light with diffuse shadows and no contact definition",
+    "target_value": "Illuminance 75,000 Lux, Temperature 4,200 K, Source Angle 0.545 deg, Elevation 14.5 deg, Contact Shadow Length 0.12 enabled",
+    "reference_url": "https://commons.wikimedia.org/wiki/File:Tuolumne_River_Dana_Fork2.jpg",
+    "expected_score_gain": 0.6
+  },
+  {
+    "id": "P1-11",
+    "priority": "P1",
+    "target": "lighting",
+    "ue_object": "SkyAtmosphere",
+    "parameter": "MieScatteringScale",
+    "current_guess": "Dense foggy haze washing out distant silhouettes and sky contrast",
+    "target_value": "Mie Scattering Coefficient 0.0018, Mie Absorption 0.0004, Mie Anisotropy 0.82 for authentic 9,000 ft razor-sharp High Sierra thin air",
+    "reference_url": "https://commons.wikimedia.org/wiki/File:Thousand_Island_Lake_bridge.jpg",
+    "expected_score_gain": 0.5
+  }
+]

@@ -70,6 +70,8 @@ Godot (top) vs Unreal (bottom): ![](docs/compare/side-by-side.jpg)
 - `thru-asset-librarian` made 18 parallel section-by-section research jobs plus 1 gap analysis, and produced [`COVERAGE.md`](managed-agents/outputs/asset-librarian/COVERAGE.md).
 - `thru-license-auditor` writes [`LICENSE-AUDIT.md`](managed-agents/outputs/license-auditor/LICENSE-AUDIT.md) and `ATTRIBUTION.txt`.
 
+**Proof of the Managed Agents loop:** [`LOOP-SUMMARY.md`](managed-agents/LOOP-SUMMARY.md) (before/after scores for 2 critique iterations in one persistent environment) and [`RUNS.jsonl`](managed-agents/RUNS.jsonl) (raw log of all 24 interactions, `gemini-3.8-flash`).
+
 As of 15:52 PT: 23 interactions, all completed, across 21 sandboxes and about 56.6M tokens.
 
 ## Live demo (judges)

@@ -1,4 +1,4 @@
-# THRU x Gemini Managed Agents: SHOWCASE (final, generated 15:52 PT)
+# THRU x Gemini Managed Agents: SHOWCASE (final, generated 16:08 PT)
 
 > **How we used Managed Agents (submission blurb):** THRU runs three persisted Gemini Managed Agents: an art director that critiques every new Unreal render against real CC-licensed Sierra photos and feeds a scored fix list back into the render loop from one persistent sandbox that remembers past critiques, an asset librarian that fanned out across the whole Pacific Crest Trail in parallel sandboxes to write build-ready asset specs for our Blender lane, and a licence auditor that checks credits for YouTube safety. Each agent is defined once with its own instructions and mounted skills, then invoked by ID, so research, critique and compliance run as hosted jobs instead of on our overloaded workstation.
 
@@ -13,7 +13,7 @@ Each one is now a **named, persisted managed agent**, each with its own system i
 
 | Agent ID | Role | Mounted skill | Runs | Completed | Tokens |
 |---|---|---|---|---|---|
-| `thru-art-director` | THRU photoreal art director: compares Unreal stills to real High Sierra/PCT reference photos and writes FIXES.md | `.agents/skills/*/SKILL.md` | 3 | 3 | 3,291,958 |
+| `thru-art-director` | THRU photoreal art director: compares Unreal stills to real High Sierra/PCT reference photos and writes FIXES.md | `.agents/skills/*/SKILL.md` | 4 | 4 | 3,854,475 |
 | `thru-asset-librarian` | THRU asset librarian: researches real PCT section visuals and emits structured Blender asset specs | `.agents/skills/*/SKILL.md` | 19 | 19 | 51,768,148 |
 | `thru-license-auditor` | THRU licence auditor: checks audio credits and asset-pack lists for YouTube/public-video safety | `.agents/skills/*/SKILL.md` | 1 | 1 | 1,511,147 |
 
@@ -28,9 +28,9 @@ Each one is now a **named, persisted managed agent**, each with its own system i
 - **Secrets stay out.** The API key is sourced only in the calling shell; no key appears in prompts, sandboxes, files or git.
 
 ## Totals
-- Interactions run: **23** (23 completed), distinct sandboxes (environments): **21**
-- Tokens: total 56,571,253 (input 55,827,678, output 513,440, cached 52,195,919, thinking 230,135)
-- Wall time per agent (sum of interactions): thru-art-director 11.5 min, thru-asset-librarian 103.5 min, thru-license-auditor 7.1 min
+- Interactions run: **24** (24 completed), distinct sandboxes (environments): **21**
+- Tokens: total 57,133,770 (input 56,382,435, output 516,492, cached 52,611,507, thinking 234,843)
+- Wall time per agent (sum of interactions): thru-art-director 12.8 min, thru-asset-librarian 103.5 min, thru-license-auditor 7.1 min
 - Full log: `managed-agents/RUNS.jsonl` (one row per interaction: interaction_id, environment_id, prompt, output_text, files, usage, seconds)
 
 ## 1. thru-art-director: Unreal stills vs the real High Sierra
@@ -337,47 +337,66 @@ or regressed since the last iteration. Output is critic.sh-compatible JSON (`sco
 
 Latest hook output:
 ```markdown
-# Managed art-director critique (live hook) 15:46 PT
-- agent `thru-art-director`, interaction `v1_ChdFb1RlYXFxREhxWDQtc0FQcWVxZGdBSRIXZFliZWF0dkFIOUsxMU1rUG9xN1dzUWM`
-- persistent environment `935b320c904cc3c5537fbb9468d869ee` (iteration 1 of the memory chain)
-- stills: 1505_hero_low_iter2-dense-route-hiker-pack-trees.png, 1505_hiker_iter2-dense-route-hiker-pack-trees.png, 1505_wide_iter2-dense-route-hiker-pack-trees.png
-- overall: 2.4  scores: {"1505_hero_low_iter2-dense-route-hiker-pack-trees.png": 2.5, "1505_hiker_iter2-dense-route-hiker-pack-trees.png": 2.0, "1505_wide_iter2-dense-route-hiker-pack-trees.png": 2.8}
-- delta vs previous: Improved vs 1440 blockout: transitioned from stacked green cone trees to branched pine meshes and added character path traversal. Critical regressions: character is an untextured nude mannequin without pack/gear; bridge is an urban municipal 2x4 railing on planar tile abutments; terrain is covered in uniform straw thatch and glowing orange clay.
+# Managed art-director critique (live hook) 16:07 PT
+- agent `thru-art-director`, interaction `v1_ChdFb1RlYXFxREhxWDQtc0FQcWVxZGdBSRIXY0l2ZWFxZXJFN2JVLXNBUHViektnUUU`
+- persistent environment `935b320c904cc3c5537fbb9468d869ee` (iteration 2 of the memory chain)
+- stills: hero_low.png, hiker.png, trail.png, wet_stones.png, wide.png
+- overall: 1.7  scores: {"hero_low.png": 0.5, "hiker.png": 2.2, "trail.png": 2.6, "wet_stones.png": 1.5, "wide.png": 1.8}
+- delta vs previous: Pass1 applied previous lighting/dust params, yielding cleaner trail color and sharper atmospheric contrast. However, overall score regressed from 2.4 to 1.7 due to severe asset & camera regressions: (1) hero_low camera is 90% obstructed by a blurred rock mesh (-2.0); (2) wide camera is bifurcated by a dead-center tree trunk (-1.0); (3) granite boulders corrupted into hollow, paper-thin faceted origami shells (-1.0); (4) hiker gained clothes (+0.2) but backpack is a solid mint-green rectangular cardboard box; (5) conifers defoliated into bare matchstick poles (-0.8).
 
 ## Top issues
-- Bridge architecture is an urban/park brown-painted 2x4 railing on planar tile-faced vertical piers instead of a rustic USFS peeled-log stringer bridge on dry-stacked granite cribbing.
-- Hiker character is an untextured low-poly nude mannequin running barefoot without clothes, backpack, or trekking poles.
-- Ground cover is a repetitive yellow straw/hay mulch carpet, paired with glowing orange clay trail paint instead of decomposed granite (DG) sand and pine needle duff.
-- Stream banks have vertical geometric shear faces with stretched textures, and streambed lacks snowmelt water clarity and dynamic boulder foam.
-- Vegetation includes out-of-place tropical broadleaf houseplant meshes; conifers have noisy brown alpha cards and telephone-pole trunks without root flare.
-- Lighting has excessive milky fog density (0.011) washing out background mountain geometry, while ambient fill lacks directional contrast.
+- Previous Issue 1 (Bridge/Abutments - PARTLY/REGRESSED): Bridge received striped wood grain, but abutments spawned grotesque, hollow, faceted origami boulders that clip through the camera and terrain.
+- Previous Issue 2 (Hiker/Gear - PARTLY FIXED): Mannequin is now clothed in red shirt and hat (+0.2), but the backpack is a primitive mint-green rectangular box with zero straps, pockets, or PBR detail.
+- Previous Issue 3 (Ground Cover/Trail - PARTLY FIXED): Trail tread color improved from bright orange to natural decomposed granite sand (+0.3), but terrain still lacks native Carex sedge tufts and conifer duff.
+- Previous Issue 4 (Stream Banks/Water - NOT FIXED/REGRESSED): Water became an opaque dark murk (opacity 0.22, dark tint), and streambed is surrounded by hollow paper rock shells with zero flow foam.
+- Previous Issue 5 (Conifers/Foliage - REGRESSED): Pine canopies lost needle cards, becoming bare matchstick spires and dead vertical poles with zero Sierra pine silhouette.
+- Previous Issue 6 (Lighting/Atmosphere - FIXED): Fog density (0.0028) and sun settings eliminated the milky haze, but harsh direct light now exposes severe geometric facets on rocks.
 
 ## param_changes (params.json keys)
 ```json
 {
  "light": {
-  "sun_pitch": -13.5,
-  "sun_lux": 26.0,
-  "sun_temp": 4250,
-  "sky_int": 1.65,
-  "fog_density": 0.0028,
-  "exposure_bias": 0.1
+  "sun_pitch": -15.0,
+  "sun_lux": 22.0,
+  "sky_int": 1.8,
+  "fog_density": 0.0032,
+  "exposure_bias": 0.0
  },
  "water": {
   "tint": [
-   0.18,
-   0.36,
-   0.4
+   0.24,
+   0.42,
+   0.44
   ],
-  "opacity": 0.22,
-  "roughness": 0.08,
-  "normal_strength": 0.65,
-  "flow_speed": 0.48
+  "opacity": 0.14,
+  "roughness": 0.06,
+  "normal_strength": 0.55
  },
  "granite": {
-  "rough": 0.78,
-  "wet_band": 0.22,
+  "rough": 0.82,
+  "wet_band": 0.18,
+  "tint": [
+   0.76,
 ```
+
+## Render-loop progression: before / after (LOOP-SUMMARY.md)
+# THRU render loop x managed art director: before / after
+
+**Iteration 1 (iter2 render, 15:05):** overall **2.4/10**
+**Pass 1 (rendered with the agent's param_changes applied):** overall **1.7/10**
+
+| Shot | Iter-1 score | Pass-1 score | Change |
+|---|---|---|---|
+| hero_low | 2.5 | 0.5 | -2.0 |
+| hiker | 2.0 | 2.2 | +0.2 |
+| wide | 2.8 | 1.8 | -1.0 |
+| trail | not shot | 2.6 |  |
+| wet_stones | not shot | 1.5 |  |
+
+**Honest read:** the score went DOWN (2.4 to 1.7). The agent attributes the drop mostly to asset and camera changes that landed in the same pass (hero_low camera blocked by a rock, hollow faceted boulders, conifers that lost their needles, a box-shaped backpack). It credits its own lighting and dust params with fixing the haze and the orange trail. It also pulled back its own water change (opacity 0.22 to 0.14, lighter tint) after it made the creek murky. That is the loop working: each critique reads the last one and corrects it.
+
+
+Full version: `managed-agents/LOOP-SUMMARY.md`.
 
 ## Interaction ledger
 | label | agent | status | interaction_id | environment_id | sec | tokens |
@@ -405,6 +424,7 @@ Latest hook output:
 | librarian/gap-analysis-blender-inventory | thru-asset-librarian | completed | `v1_Chc3NFRlYXE3RkFvTFNfUFVQdzZxNjhBOBIXNzRUZWFxN0ZBb0xTX1BVUHc2cTY4QTg` | `f25944c6786d2940cc0acbaafbb05e06` | 654.1 | 2,399,149 |
 | librarian/fanout-16 | thru-asset-librarian | completed | `v1_ChdySVhlYXVPTE5MV0kxTWtQaWRyVTZROBIXcklYZWF1T0xOTFdJMU1rUGlkclU2UTg` | `5d28f58d36a4b2646217f423a3a951f0` | 490.9 | 3,700,946 |
 | librarian/fanout-15 | thru-asset-librarian | completed | `v1_ChdpNFhlYW83NUJPejQtc0FQMWEyb2lBTRIXaTRYZWFvNzVCT3o0LXNBUDFhMm9pQU0` | `a1583eee557a509c4243da5edab612bc` | 659.7 | 8,757,586 |
+| art-director/live-hook-iterpass1 | thru-art-director | completed | `v1_ChdFb1RlYXFxREhxWDQtc0FQcWVxZGdBSRIXY0l2ZWFxZXJFN2JVLXNBUHViektnUUU` | `935b320c904cc3c5537fbb9468d869ee` | 73.3 | 562,517 |
 
 ## What worked, what did not
 {open(NOTES).read() if os.path.exists(NOTES) else '(pending)'}

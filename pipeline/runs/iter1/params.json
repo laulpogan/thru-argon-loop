@@ -1,0 +1,6 @@
+{"geo":{"len":120,"wid":80,"res":400,"meander":3.0,"halfw":3.2,"depth":0.7,"bankh":1.6,"trail_off":5.5,"slope":0.02,"water_h":0.45},
+ "light":{"sun_pitch":-6.0,"sun_yaw":-150.0,"sun_lux":9.0,"sun_temp":3900,"sky_int":1.0,"fog_density":0.012,"fog_inscatter":[1.0,0.75,0.5],"exposure_bias":0.0},
+ "water":{"tint":[0.55,0.68,0.62],"opacity":0.18,"roughness":0.03,"ior":1.33,"normal_strength":0.6,"flow_speed":0.35},
+ "granite":{"rough":0.65,"wet_band":0.35,"wet_dark":0.45,"wet_rough":0.08,"tint":[1.0,1.0,1.0]},
+ "dust":{"tint":[1.0,1.0,1.0],"rough":0.92},
+ "cam":{"fov":55}}

@@ -1,0 +1,57 @@
+{
+  "out_wav": "../unreal/systems/unreal_walk_10s_16lufs.wav",
+  "duration_s": 10.0,
+  "walk_duration_s": 10.0,
+  "linger_duration_s": 0.0,
+  "sample_rate": 48000,
+  "channels": 2,
+  "measured_output_lufs": -16.11,
+  "measured_output_tp_db": -5.6,
+  "measured_output_lra": 1.4,
+  "footstep_count": 17,
+  "surfaces_used": [
+    "wood_bridge"
+  ],
+  "bird_calls_placed": [
+    {
+      "time_s": 2.4,
+      "species": "mountain_chickadee_1583116",
+      "pan": -0.45,
+      "gain": 0.2
+    }
+  ],
+  "sources": {
+    "creek_near": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/creek_near.wav",
+    "creek_far": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/creek_far.wav",
+    "creek_medium": "/home/dellpromax/cs-audit/gemini-hackathon/audio/masters/ambience/creek_medium.wav",
+    "sierra_dusk": "/home/dellpromax/cs-audit/gemini-hackathon/audio/masters/ambience/Sierra_alpine_dusk.wav",
+    "wind_soft": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/wind_pines_soft.wav",
+    "wind_medium": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/wind_pines_medium.wav",
+    "wind_strong": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/wind_pines_strong.wav",
+    "bird_chickadee_1": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/mountain_chickadee_1583116.wav",
+    "bird_chickadee_2": "/home/dellpromax/cs-audit/gemini-hackathon/audio/masters/ambience/mountain_chickadee_2127131.wav",
+    "bird_canyon_wren": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/canyon_wren_1320386.wav",
+    "insects_cricket": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/insects_western_cricket.wav",
+    "music_sierra": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/music_sierra_conifer.wav",
+    "music_creeks_bed": "/home/dellpromax/cs-audit/gemini-hackathon/audio/masters/music/creeks_bed.wav",
+    "music_creeks_melody": "/home/dellpromax/cs-audit/gemini-hackathon/audio/masters/music/creeks_melody.wav",
+    "step_dg_01": "/home/dellpromax/cs-audit/gemini-hackathon/audio/masters/sfx/decomposed_granite_01.wav",
+    "step_dg_02": "/home/dellpromax/cs-audit/gemini-hackathon/audio/masters/sfx/decomposed_granite_02.wav",
+    "step_dg_03": "/home/dellpromax/cs-audit/gemini-hackathon/audio/masters/sfx/decomposed_granite_03.wav",
+    "step_dg_04": "/home/dellpromax/cs-audit/gemini-hackathon/audio/masters/sfx/decomposed_granite_04.wav",
+    "step_granite_01": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/step_granite_01.wav",
+    "step_granite_02": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/step_granite_02.wav",
+    "step_granite_03": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/step_granite_03.wav",
+    "step_granite_04": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/step_granite_04.wav",
+    "step_gravel_01": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/step_gravel_01.wav",
+    "step_gravel_02": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/step_gravel_02.wav",
+    "step_gravel_03": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/step_gravel_03.wav",
+    "step_gravel_04": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/step_gravel_04.wav",
+    "step_wood_01": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/step_wood_01.wav",
+    "step_wood_02": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/step_wood_02.wav",
+    "step_wood_03": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/step_wood_03.wav",
+    "step_wood_04": "/home/dellpromax/cs-audit/gemini-hackathon/reset/audiomix/masters/step_wood_04.wav",
+    "step_splash_01": "/home/dellpromax/cs-audit/gemini-hackathon/audio/masters/sfx/splash_01.wav",
+    "step_splash_02": "/home/dellpromax/cs-audit/gemini-hackathon/audio/masters/sfx/splash_02.wav"
+  }
+}

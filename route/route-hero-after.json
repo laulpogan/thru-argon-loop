@@ -1,0 +1,99 @@
+{
+  "name": "hero-sierra-middle-fork-creek",
+  "note": "Locked AFTER route (Playtest Operator): starts 18m south of bridge corner route[487], walks at natural 1.38 m/s along trail tread, turns cleanly onto South-West bridge ramp, crosses wooden bridge deck centered between handrails over Middle Fork San Joaquin River, and lingers 14s on the bridge deck overlooking water reflections and wet boulders.",
+  "region": "pct-region-0029",
+  "start": {
+    "place": "middle_fork_san_joaquin_hero",
+    "lat": 37.6538256,
+    "lon": -119.0800196
+  },
+  "direction": 1,
+  "start_back_m": 27.6,
+  "duration_s": 36,
+  "linger_s": 14,
+  "fps": 30,
+  "year": 1998,
+  "sky_hour": 17.6,
+  "settle_s": 25,
+  "steer_lookahead_m": 2.0,
+  "camera": {
+    "fov": 58,
+    "back_m": 3.8,
+    "up_m": 1.65,
+    "look_ahead_m": 7.5,
+    "look_up_m": 0.85,
+    "smooth": 0.06,
+    "linger_orbit_deg": 28,
+    "linger_rise_m": 0.9,
+    "linger_look_m": 3.5
+  },
+  "trail_day": 120,
+  "speed_m_s": 1.38,
+  "waypoints": [
+    [
+      3044.8506,
+      2349.0273,
+      6279.0653
+    ],
+    [
+      3045.0066,
+      2348.7205,
+      6274.0571
+    ],
+    [
+      3044.0496,
+      2348.5296,
+      6269.1822
+    ],
+    [
+      3043.0926,
+      2348.3386,
+      6264.3074
+    ],
+    [
+      3042.1355,
+      2348.1477,
+      6259.4325
+    ],
+    [
+      3041.5613,
+      2348.0332,
+      6256.5076
+    ],
+    [
+      3041.1785,
+      2347.9568,
+      6254.5576
+    ],
+    [
+      3043.2539,
+      2348.1446,
+      6253.3664
+    ],
+    [
+      3045.3292,
+      2348.3324,
+      6252.1753
+    ],
+    [
+      3049.48,
+      2348.708,
+      6249.793
+    ],
+    [
+      3053.812,
+      2348.6641,
+      6247.3108
+    ],
+    [
+      3058.144,
+      2348.6202,
+      6244.8286
+    ],
+    [
+      3056.6601,
+      2348.4125,
+      6240.2579
+    ]
+  ]
+}

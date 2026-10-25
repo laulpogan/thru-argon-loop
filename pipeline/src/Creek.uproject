@@ -1,0 +1,28 @@
+{
+ "FileVersion": 3,
+ "EngineAssociation": "5.6",
+ "Category": "",
+ "Description": "THRU UE5 creek spike",
+ "Plugins": [
+  {
+   "Name": "PythonScriptPlugin",
+   "Enabled": true
+  },
+  {
+   "Name": "EditorScriptingUtilities",
+   "Enabled": true
+  },
+  {
+   "Name": "MovieRenderPipeline",
+   "Enabled": true
+  },
+  {
+   "Name": "SequencerScripting",
+   "Enabled": true
+  },
+  {
+   "Name": "Interchange",
+   "Enabled": true
+  }
+ ]
+}

@@ -1,0 +1,3 @@
+F=/home/dellpromax/cs-audit/gemini-hackathon/reset/models-foliage; cat /home/dellpromax/cs-audit/gemini-hackathon/prompts/reset/ORCH-COMMON.md /home/dellpromax/cs-audit/gemini-hackathon/prompts/reset/EXT-COMMON.md /home/dellpromax/cs-audit/gemini-hackathon/prompts/reset/ext-models-foliage.md > $F/PROMPT.md
+echo "CODEX DISABLED 14:08 PT (Paul approved all-Argon; Quota Cop): use pilane/launch-on-pod.sh (pi + gemini-4-argon)" >&2; exit 1 # CODEX DISABLED
+cd ~ && ARGON_LANE=models-foliage ~/.local/bin/codex exec -m gpt-6.1-sol --dangerously-bypass-approvals-and-sandbox "$(cat $F/PROMPT.md)" 2>&1 | tail -c 50M > $F/codex.log; echo "codex exited $(date +%T)" >> $F/codex.log

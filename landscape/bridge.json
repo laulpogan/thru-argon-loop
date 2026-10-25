@@ -1,0 +1,1676 @@
+{
+  "schema": "thru.unreal-landscape-export.bridge/v1",
+  "region_id": "pct-region-0029",
+  "node_name": "TrailSpan_BridgeWood_nhd-5e02f9e3f66982ec7e5e-0_1462937",
+  "kind": "bridge_wood",
+  "crossing_name": "Middle Fork San Joaquin River",
+  "feature_id": "nhd-5e02f9e3f66982ec7e5e-0",
+  "route_m": 1462936.8,
+  "seed_text": "nhd-5e02f9e3f66982ec7e5e-0:1462937",
+  "dimensions": {
+    "span_m": 13.5,
+    "total_length_with_ramps_m": 16.0059,
+    "walkable_deck_width_m": 1.25,
+    "structural_rail_outer_width_m": 1.763,
+    "clearance_above_bank_m": 0.55,
+    "deck_lift_above_center_ground_m": 1.703,
+    "deck_thickness_m": 0.065,
+    "stringer_count": 3,
+    "stringer_depth_m": 0.463,
+    "bays_count": 2,
+    "plank_count": 67,
+    "plank_pitch_m": 0.20149
+  },
+  "transforms": {
+    "godot_local": {
+      "origin_m": [
+        3049.4802,
+        2348.3049,
+        6249.7935
+      ],
+      "deck_y_m": 2348.3048,
+      "ground_y_m": 2346.6019,
+      "basis": {
+        "euler_deg": [
+          0.0,
+          29.832,
+          1.676
+        ],
+        "euler_rad": [
+          0.0,
+          0.5207,
+          0.0293
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "x": [
+          0.8671,
+          0.0292,
+          -0.4973
+        ],
+        "y": [
+          -0.0254,
+          0.9996,
+          0.0146
+        ],
+        "z": [
+          0.4975,
+          0.0,
+          0.8675
+        ]
+      },
+      "south_west_deck_end_m": [
+        3043.6273,
+        2348.1078,
+        6253.1503
+      ],
+      "north_east_deck_end_m": [
+        3055.3331,
+        2348.502,
+        6246.4367
+      ],
+      "south_west_ramp_foot_m": [
+        3042.543,
+        2347.6544,
+        6253.7721
+      ],
+      "north_east_ramp_foot_m": [
+        3056.4215,
+        2348.1282,
+        6245.8125
+      ]
+    },
+    "ue_bridge_aligned_local_m": {
+      "origin_m": [
+        0.0,
+        0.0,
+        1.02
+      ],
+      "exact_godot_deck_z_local_m": 1.0438,
+      "span_axis_local": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "width_axis_local": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "up_axis_local": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "south_west_deck_end_local_m": [
+        -0.0434,
+        -6.7432,
+        0.8468
+      ],
+      "north_east_deck_end_local_m": [
+        0.0373,
+        6.7426,
+        1.241
+      ],
+      "south_west_ramp_foot_local_m": [
+        -0.0509,
+        -7.9924,
+        0.3934
+      ],
+      "north_east_ramp_foot_local_m": [
+        0.0448,
+        7.9965,
+        0.8672
+      ]
+    },
+    "ue_bridge_aligned_cm": {
+      "note": "Matches reset/unreal/CAMERAS.json and ue_main.py. If importing bridge_mesh.glb (which has DECK_Z=1.02m baked into vertices like gen.py), spawn at location_cm=[0,0,0], rotation=[0,0,0]. If spawning bridge_godot_exact.glb at deck center, use deck_center_location_cm and deck_center_rotation_deg.",
+      "baked_mesh_spawn_location_cm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "baked_mesh_spawn_rotation_deg": {
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 0.0
+      },
+      "deck_center_location_cm": [
+        0.0,
+        0.0,
+        102.0
+      ],
+      "deck_center_rotation_deg": {
+        "roll": 0.0,
+        "pitch": 1.676,
+        "yaw": -90.0
+      },
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "ue_anchor_centered_cm": {
+      "location_cm": [
+        0.0,
+        0.0,
+        170.3
+      ],
+      "rotation_deg": {
+        "roll": 0.0,
+        "pitch": 1.676,
+        "yaw": -29.832
+      },
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "meshes_exported": {
+    "bridge_mesh_glb": "bridge_mesh.glb (Full 4-part Godot bridge pre-transformed into UE gen.py/ue_main.py coordinates; drop-in replacement for assets/bridge.glb)",
+    "bridge_godot_exact_glb": "bridge_godot_exact.glb (Full 4-part Godot bridge in structure-local frame: +X along span, +Y up, +Z across width, y=0 at deck top)",
+    "owned_timber_bridge_source_glb": "weathered_wooden_footbridge_sect.glb (Raw source GLB asset scaled by [3.2419, 1.0, 0.8065] at y=-0.4004m)"
+  },
+  "materials": {
+    "OwnedTimberBridge": {
+      "source": "Embedded PBR textures in weathered_wooden_footbridge_sect.glb",
+      "physical_material": "PM_WoodBridge"
+    },
+    "Part_wood": {
+      "albedo": "textures/wood_planks_grey_diff.jpg",
+      "normal_gl": "textures/wood_planks_grey_nor_gl.jpg",
+      "normal_dx_ue": "textures/wood_planks_grey_nor_dx.png",
+      "roughness": "textures/wood_planks_grey_rough.jpg",
+      "uv_triplanar_scale_m": 1.5,
+      "physical_material": "PM_WoodBridge"
+    },
+    "Part_rail": {
+      "albedo": "textures/rusty_metal_02_diff.jpg",
+      "normal_gl": "textures/rusty_metal_02_nor_gl.jpg",
+      "normal_dx_ue": "textures/rusty_metal_02_nor_dx.png",
+      "roughness": "textures/rusty_metal_02_rough.jpg",
+      "metallic": 0.55,
+      "physical_material": "PM_WoodBridge"
+    },
+    "Part_stone": {
+      "description": "Dry-laid granite rock cribs at both bank abutments",
+      "physical_material": "PM_Granite"
+    }
+  },
+  "godot_extracted_parts": [
+    {
+      "aabb_pos": [
+        -2.083,
+        0.0,
+        -1.0931
+      ],
+      "aabb_size": [
+        4.166,
+        1.2,
+        2.1861
+      ],
+      "local_basis": {
+        "euler_deg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "euler_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          3.2419,
+          1.0,
+          0.8065
+        ],
+        "x": [
+          3.2419,
+          0.0,
+          0.0
+        ],
+        "y": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "z": [
+          0.0,
+          0.0,
+          0.8065
+        ]
+      },
+      "local_origin": [
+        0.0,
+        -0.4004,
+        0.0
+      ],
+      "name": "weathered_wooden_footbridge_sect"
+    },
+    {
+      "aabb_pos": [
+        -8.0127,
+        -1.2024,
+        -0.775
+      ],
+      "aabb_size": [
+        16.0059,
+        1.2083,
+        1.55
+      ],
+      "local_basis": {
+        "euler_deg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "euler_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "x": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "y": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "z": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "local_origin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "name": "Part_wood"
+    },
+    {
+      "aabb_pos": [
+        -6.9154,
+        -0.7843,
+        -1.1463
+      ],
+      "aabb_size": [
+        13.7668,
+        0.655,
+        2.3259
+      ],
+      "local_basis": {
+        "euler_deg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "euler_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "x": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "y": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "z": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "local_origin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "name": "Part_stone"
+    },
+    {
+      "aabb_pos": [
+        -6.6716,
+        -0.006,
+        -0.4636
+      ],
+      "aabb_size": [
+        13.3438,
+        0.0209,
+        0.9275
+      ],
+      "local_basis": {
+        "euler_deg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "euler_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "x": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "y": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "z": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "local_origin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "name": "Part_rail"
+    }
+  ],
+  "approach_ramps": [
+    {
+      "side": "south_west_bank",
+      "top_local_xy_m": [
+        -6.75,
+        0.0
+      ],
+      "foot_local_xy_m": [
+        -8.0127,
+        -0.4167
+      ],
+      "length_m": 1.3297,
+      "width_m": 1.25,
+      "thickness_m": 0.1,
+      "tilt_rad": 0.3188,
+      "tilt_deg": 18.26,
+      "visual_center_local_m": [
+        -7.3657,
+        -0.2558,
+        0.0
+      ],
+      "collision_center_local_m": [
+        -7.35,
+        -0.3033,
+        0.0
+      ],
+      "collision_size_m": [
+        1.3297,
+        0.2,
+        1.25
+      ]
+    },
+    {
+      "side": "north_east_bank",
+      "top_local_xy_m": [
+        6.75,
+        0.0
+      ],
+      "foot_local_xy_m": [
+        7.9932,
+        -0.4103
+      ],
+      "length_m": 1.3092,
+      "width_m": 1.25,
+      "thickness_m": 0.1,
+      "tilt_rad": -0.3188,
+      "tilt_deg": -18.26,
+      "visual_center_local_m": [
+        7.3559,
+        -0.2526,
+        0.0
+      ],
+      "collision_center_local_m": [
+        7.3403,
+        -0.3001,
+        0.0
+      ],
+      "collision_size_m": [
+        1.3092,
+        0.2,
+        1.25
+      ]
+    }
+  ],
+  "stringers": [
+    {
+      "stringer_index": 0,
+      "local_center_m": [
+        0.0,
+        -0.2965,
+        -0.45
+      ],
+      "size_m": [
+        13.8,
+        0.463,
+        0.2
+      ]
+    },
+    {
+      "stringer_index": 1,
+      "local_center_m": [
+        0.0,
+        -0.2965,
+        0.0
+      ],
+      "size_m": [
+        13.8,
+        0.463,
+        0.2
+      ]
+    },
+    {
+      "stringer_index": 2,
+      "local_center_m": [
+        0.0,
+        -0.2965,
+        0.45
+      ],
+      "size_m": [
+        13.8,
+        0.463,
+        0.2
+      ]
+    }
+  ],
+  "midspan_bent": [
+    {
+      "part": "bent_post_-1",
+      "local_center_m": [
+        0.0,
+        -0.8652,
+        -0.5
+      ],
+      "size_m": [
+        0.22,
+        0.6744,
+        0.22
+      ]
+    },
+    {
+      "part": "bent_post_1",
+      "local_center_m": [
+        0.0,
+        -0.8652,
+        0.5
+      ],
+      "size_m": [
+        0.22,
+        0.6744,
+        0.22
+      ]
+    },
+    {
+      "part": "bent_cap",
+      "local_center_m": [
+        0.0,
+        -0.628,
+        0.0
+      ],
+      "size_m": [
+        0.26,
+        0.2,
+        1.55
+      ]
+    }
+  ],
+  "rock_cribs": [
+    {
+      "end": "south_west",
+      "course": 0,
+      "column": 0,
+      "local_center_m": [
+        -6.5176,
+        -0.54,
+        -0.725
+      ],
+      "size_m": [
+        0.58,
+        0.241,
+        0.62
+      ]
+    },
+    {
+      "end": "south_west",
+      "course": 0,
+      "column": 1,
+      "local_center_m": [
+        -6.4878,
+        -0.54,
+        0.0
+      ],
+      "size_m": [
+        0.482,
+        0.301,
+        0.587
+      ]
+    },
+    {
+      "end": "south_west",
+      "course": 0,
+      "column": 2,
+      "local_center_m": [
+        -6.3969,
+        -0.54,
+        0.725
+      ],
+      "size_m": [
+        0.526,
+        0.263,
+        0.627
+      ]
+    },
+    {
+      "end": "south_west",
+      "course": 1,
+      "column": 0,
+      "local_center_m": [
+        -6.5104,
+        -0.26,
+        -0.725
+      ],
+      "size_m": [
+        0.592,
+        0.293,
+        0.571
+      ]
+    },
+    {
+      "end": "south_west",
+      "course": 1,
+      "column": 1,
+      "local_center_m": [
+        -6.4139,
+        -0.26,
+        0.0
+      ],
+      "size_m": [
+        0.542,
+        0.298,
+        0.622
+      ]
+    },
+    {
+      "end": "south_west",
+      "course": 1,
+      "column": 2,
+      "local_center_m": [
+        -6.5355,
+        -0.26,
+        0.725
+      ],
+      "size_m": [
+        0.612,
+        0.303,
+        0.64
+      ]
+    },
+    {
+      "end": "north_east",
+      "course": 0,
+      "column": 0,
+      "local_center_m": [
+        6.395,
+        -0.51,
+        -0.725
+      ],
+      "size_m": [
+        0.596,
+        0.242,
+        0.562
+      ]
+    },
+    {
+      "end": "north_east",
+      "course": 0,
+      "column": 1,
+      "local_center_m": [
+        6.3815,
+        -0.51,
+        0.0
+      ],
+      "size_m": [
+        0.558,
+        0.255,
+        0.621
+      ]
+    },
+    {
+      "end": "north_east",
+      "course": 0,
+      "column": 2,
+      "local_center_m": [
+        6.3754,
+        -0.51,
+        0.725
+      ],
+      "size_m": [
+        0.599,
+        0.274,
+        0.636
+      ]
+    },
+    {
+      "end": "north_east",
+      "course": 1,
+      "column": 0,
+      "local_center_m": [
+        6.4991,
+        -0.23,
+        -0.725
+      ],
+      "size_m": [
+        0.56,
+        0.248,
+        0.658
+      ]
+    },
+    {
+      "end": "north_east",
+      "course": 1,
+      "column": 1,
+      "local_center_m": [
+        6.4859,
+        -0.23,
+        0.0
+      ],
+      "size_m": [
+        0.593,
+        0.284,
+        0.67
+      ]
+    },
+    {
+      "end": "north_east",
+      "course": 1,
+      "column": 2,
+      "local_center_m": [
+        6.4324,
+        -0.23,
+        0.725
+      ],
+      "size_m": [
+        0.538,
+        0.31,
+        0.646
+      ]
+    }
+  ],
+  "planks": [
+    {
+      "plank_index": 0,
+      "local_center_m": [
+        -6.6493,
+        -0.0372,
+        -0.012
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2986
+      ],
+      "yaw_jitter_rad": 0.00684
+    },
+    {
+      "plank_index": 1,
+      "local_center_m": [
+        -6.4478,
+        -0.0275,
+        -0.0068
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.282
+      ],
+      "yaw_jitter_rad": 0.00281
+    },
+    {
+      "plank_index": 2,
+      "local_center_m": [
+        -6.2463,
+        -0.0377,
+        0.0157
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2774
+      ],
+      "yaw_jitter_rad": 0.00574
+    },
+    {
+      "plank_index": 3,
+      "local_center_m": [
+        -6.0448,
+        -0.0309,
+        -0.0039
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2945
+      ],
+      "yaw_jitter_rad": 0.00677
+    },
+    {
+      "plank_index": 4,
+      "local_center_m": [
+        -5.8433,
+        -0.0314,
+        -0.0057
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2525
+      ],
+      "yaw_jitter_rad": -0.0018
+    },
+    {
+      "plank_index": 5,
+      "local_center_m": [
+        -5.6418,
+        -0.0335,
+        0.0056
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2591
+      ],
+      "yaw_jitter_rad": -9e-05
+    },
+    {
+      "plank_index": 6,
+      "local_center_m": [
+        -5.4403,
+        -0.0348,
+        -0.0107
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2425
+      ],
+      "yaw_jitter_rad": 0.00579
+    },
+    {
+      "plank_index": 7,
+      "local_center_m": [
+        -5.2388,
+        -0.0342,
+        0.0067
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2336
+      ],
+      "yaw_jitter_rad": 0.00229
+    },
+    {
+      "plank_index": 8,
+      "local_center_m": [
+        -5.0373,
+        -0.0285,
+        -0.0037
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.218
+      ],
+      "yaw_jitter_rad": 0.00343
+    },
+    {
+      "plank_index": 9,
+      "local_center_m": [
+        -4.8358,
+        -0.0273,
+        0.0098
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2279
+      ],
+      "yaw_jitter_rad": 0.00341
+    },
+    {
+      "plank_index": 10,
+      "local_center_m": [
+        -4.6343,
+        -0.0276,
+        0.0125
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2871
+      ],
+      "yaw_jitter_rad": 0.00612
+    },
+    {
+      "plank_index": 11,
+      "local_center_m": [
+        -4.4328,
+        -0.0339,
+        -0.0179
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2857
+      ],
+      "yaw_jitter_rad": -0.00453
+    },
+    {
+      "plank_index": 12,
+      "local_center_m": [
+        -4.2313,
+        -0.0344,
+        -0.0095
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.271
+      ],
+      "yaw_jitter_rad": -0.00693
+    },
+    {
+      "plank_index": 13,
+      "local_center_m": [
+        -4.0299,
+        -0.038,
+        -0.0052
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2346
+      ],
+      "yaw_jitter_rad": -0.0096
+    },
+    {
+      "plank_index": 14,
+      "local_center_m": [
+        -3.8284,
+        -0.0289,
+        0.0146
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2745
+      ],
+      "yaw_jitter_rad": 0.00251
+    },
+    {
+      "plank_index": 15,
+      "local_center_m": [
+        -3.6269,
+        -0.035,
+        -0.002
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2755
+      ],
+      "yaw_jitter_rad": -0.00162
+    },
+    {
+      "plank_index": 16,
+      "local_center_m": [
+        -3.4254,
+        -0.0309,
+        0.0099
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2321
+      ],
+      "yaw_jitter_rad": -0.00595
+    },
+    {
+      "plank_index": 17,
+      "local_center_m": [
+        -3.2239,
+        -0.0271,
+        0.0097
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2461
+      ],
+      "yaw_jitter_rad": -0.00177
+    },
+    {
+      "plank_index": 18,
+      "local_center_m": [
+        -3.0224,
+        -0.0296,
+        0.0108
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2699
+      ],
+      "yaw_jitter_rad": 0.00977
+    },
+    {
+      "plank_index": 19,
+      "local_center_m": [
+        -2.8209,
+        -0.0322,
+        -0.0095
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2897
+      ],
+      "yaw_jitter_rad": -0.00435
+    },
+    {
+      "plank_index": 20,
+      "local_center_m": [
+        -2.6194,
+        -0.03,
+        0.004
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2587
+      ],
+      "yaw_jitter_rad": 0.01098
+    },
+    {
+      "plank_index": 21,
+      "local_center_m": [
+        -2.4179,
+        -0.0299,
+        0.0009
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2392
+      ],
+      "yaw_jitter_rad": -0.0009
+    },
+    {
+      "plank_index": 22,
+      "local_center_m": [
+        -2.2164,
+        -0.032,
+        -0.003
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2583
+      ],
+      "yaw_jitter_rad": -0.01194
+    },
+    {
+      "plank_index": 23,
+      "local_center_m": [
+        -2.0149,
+        -0.0374,
+        0.0017
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2113
+      ],
+      "yaw_jitter_rad": 0.01051
+    },
+    {
+      "plank_index": 24,
+      "local_center_m": [
+        -1.8134,
+        -0.034,
+        -0.0006
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2248
+      ],
+      "yaw_jitter_rad": 0.01017
+    },
+    {
+      "plank_index": 25,
+      "local_center_m": [
+        -1.6119,
+        -0.0334,
+        -0.0068
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2482
+      ],
+      "yaw_jitter_rad": 0.00735
+    },
+    {
+      "plank_index": 26,
+      "local_center_m": [
+        -1.4104,
+        -0.0315,
+        -0.0154
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2455
+      ],
+      "yaw_jitter_rad": -0.00652
+    },
+    {
+      "plank_index": 27,
+      "local_center_m": [
+        -1.209,
+        -0.0369,
+        0.0162
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2297
+      ],
+      "yaw_jitter_rad": -0.00079
+    },
+    {
+      "plank_index": 28,
+      "local_center_m": [
+        -1.0075,
+        -0.0297,
+        -0.0033
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2177
+      ],
+      "yaw_jitter_rad": -0.00012
+    },
+    {
+      "plank_index": 29,
+      "local_center_m": [
+        -0.806,
+        -0.0379,
+        0.0198
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2476
+      ],
+      "yaw_jitter_rad": 0.00106
+    },
+    {
+      "plank_index": 30,
+      "local_center_m": [
+        -0.6045,
+        -0.0316,
+        -0.0064
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2746
+      ],
+      "yaw_jitter_rad": -0.00838
+    },
+    {
+      "plank_index": 31,
+      "local_center_m": [
+        -0.403,
+        -0.0306,
+        0.0192
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2408
+      ],
+      "yaw_jitter_rad": 0.01172
+    },
+    {
+      "plank_index": 32,
+      "local_center_m": [
+        -0.2015,
+        -0.0316,
+        -0.0133
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.267
+      ],
+      "yaw_jitter_rad": 0.00643
+    },
+    {
+      "plank_index": 33,
+      "local_center_m": [
+        0.0,
+        -0.0366,
+        0.0033
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2102
+      ],
+      "yaw_jitter_rad": 0.00212
+    },
+    {
+      "plank_index": 34,
+      "local_center_m": [
+        0.2015,
+        -0.0371,
+        -0.0173
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2808
+      ],
+      "yaw_jitter_rad": 0.00811
+    },
+    {
+      "plank_index": 35,
+      "local_center_m": [
+        0.403,
+        -0.0341,
+        0.0042
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2379
+      ],
+      "yaw_jitter_rad": 0.00617
+    },
+    {
+      "plank_index": 36,
+      "local_center_m": [
+        0.6045,
+        -0.0322,
+        -0.0195
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2657
+      ],
+      "yaw_jitter_rad": 0.00016
+    },
+    {
+      "plank_index": 37,
+      "local_center_m": [
+        0.806,
+        -0.0327,
+        0.0167
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2527
+      ],
+      "yaw_jitter_rad": -0.00265
+    },
+    {
+      "plank_index": 38,
+      "local_center_m": [
+        1.0075,
+        -0.0327,
+        -0.0104
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2917
+      ],
+      "yaw_jitter_rad": -0.00703
+    },
+    {
+      "plank_index": 39,
+      "local_center_m": [
+        1.209,
+        -0.0323,
+        -0.0017
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2953
+      ],
+      "yaw_jitter_rad": -0.00782
+    },
+    {
+      "plank_index": 40,
+      "local_center_m": [
+        1.4104,
+        -0.0301,
+        0.015
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2928
+      ],
+      "yaw_jitter_rad": -0.00746
+    },
+    {
+      "plank_index": 41,
+      "local_center_m": [
+        1.6119,
+        -0.0271,
+        -0.0143
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2703
+      ],
+      "yaw_jitter_rad": -0.00543
+    },
+    {
+      "plank_index": 42,
+      "local_center_m": [
+        1.8134,
+        -0.0283,
+        -0.0189
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2706
+      ],
+      "yaw_jitter_rad": -0.00454
+    },
+    {
+      "plank_index": 43,
+      "local_center_m": [
+        2.0149,
+        -0.0361,
+        0.0153
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2371
+      ],
+      "yaw_jitter_rad": -0.00485
+    },
+    {
+      "plank_index": 44,
+      "local_center_m": [
+        2.2164,
+        -0.0336,
+        0.0071
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2166
+      ],
+      "yaw_jitter_rad": 0.01131
+    },
+    {
+      "plank_index": 45,
+      "local_center_m": [
+        2.4179,
+        -0.0282,
+        0.019
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2389
+      ],
+      "yaw_jitter_rad": -0.00665
+    },
+    {
+      "plank_index": 46,
+      "local_center_m": [
+        2.6194,
+        -0.0305,
+        0.0106
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2502
+      ],
+      "yaw_jitter_rad": 0.00859
+    },
+    {
+      "plank_index": 47,
+      "local_center_m": [
+        2.8209,
+        -0.0374,
+        -0.0121
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2672
+      ],
+      "yaw_jitter_rad": -0.00402
+    },
+    {
+      "plank_index": 48,
+      "local_center_m": [
+        3.0224,
+        -0.0381,
+        0.0151
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.223
+      ],
+      "yaw_jitter_rad": -0.00025
+    },
+    {
+      "plank_index": 49,
+      "local_center_m": [
+        3.2239,
+        -0.0335,
+        0.019
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2456
+      ],
+      "yaw_jitter_rad": 0.00014
+    },
+    {
+      "plank_index": 50,
+      "local_center_m": [
+        3.4254,
+        -0.0293,
+        -0.0002
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2106
+      ],
+      "yaw_jitter_rad": 0.00892
+    },
+    {
+      "plank_index": 51,
+      "local_center_m": [
+        3.6269,
+        -0.0303,
+        0.0014
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2667
+      ],
+      "yaw_jitter_rad": 0.00403
+    },
+    {
+      "plank_index": 52,
+      "local_center_m": [
+        3.8284,
+        -0.033,
+        -0.0154
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.267
+      ],
+      "yaw_jitter_rad": -0.00948
+    },
+    {
+      "plank_index": 53,
+      "local_center_m": [
+        4.0299,
+        -0.0363,
+        -0.0112
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2188
+      ],
+      "yaw_jitter_rad": 0.01186
+    },
+    {
+      "plank_index": 54,
+      "local_center_m": [
+        4.2313,
+        -0.0297,
+        0.0009
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2331
+      ],
+      "yaw_jitter_rad": 0.00069
+    },
+    {
+      "plank_index": 55,
+      "local_center_m": [
+        4.4328,
+        -0.0313,
+        0.0031
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2519
+      ],
+      "yaw_jitter_rad": -0.00576
+    },
+    {
+      "plank_index": 56,
+      "local_center_m": [
+        4.6343,
+        -0.037,
+        0.0011
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2884
+      ],
+      "yaw_jitter_rad": -0.00821
+    },
+    {
+      "plank_index": 57,
+      "local_center_m": [
+        4.8358,
+        -0.03,
+        -0.0194
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2231
+      ],
+      "yaw_jitter_rad": 0.0034
+    },
+    {
+      "plank_index": 58,
+      "local_center_m": [
+        5.0373,
+        -0.0343,
+        0.0133
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2172
+      ],
+      "yaw_jitter_rad": -0.00346
+    },
+    {
+      "plank_index": 59,
+      "local_center_m": [
+        5.2388,
+        -0.0376,
+        -0.0123
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2258
+      ],
+      "yaw_jitter_rad": 0.00181
+    },
+    {
+      "plank_index": 60,
+      "local_center_m": [
+        5.4403,
+        -0.0348,
+        -0.0074
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2278
+      ],
+      "yaw_jitter_rad": -0.00848
+    },
+    {
+      "plank_index": 61,
+      "local_center_m": [
+        5.6418,
+        -0.0383,
+        0.0182
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.226
+      ],
+      "yaw_jitter_rad": -0.00833
+    },
+    {
+      "plank_index": 62,
+      "local_center_m": [
+        5.8433,
+        -0.0383,
+        -0.0173
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2929
+      ],
+      "yaw_jitter_rad": -0.001
+    },
+    {
+      "plank_index": 63,
+      "local_center_m": [
+        6.0448,
+        -0.03,
+        0.0048
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2904
+      ],
+      "yaw_jitter_rad": 0.01062
+    },
+    {
+      "plank_index": 64,
+      "local_center_m": [
+        6.2463,
+        -0.0364,
+        -0.0199
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2168
+      ],
+      "yaw_jitter_rad": 0.00033
+    },
+    {
+      "plank_index": 65,
+      "local_center_m": [
+        6.4478,
+        -0.0335,
+        0.0023
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.2811
+      ],
+      "yaw_jitter_rad": -0.00161
+    },
+    {
+      "plank_index": 66,
+      "local_center_m": [
+        6.6493,
+        -0.0289,
+        -0.0129
+      ],
+      "size_m": [
+        0.1795,
+        0.065,
+        1.231
+      ],
+      "yaw_jitter_rad": 0.00274
+    }
+  ]
+}

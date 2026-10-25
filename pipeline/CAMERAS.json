@@ -1,0 +1,254 @@
+{
+ "note": "UE5.6 spike cameras, iteration 2+ (14:52 PT). UE units cm, Z-up, left-handed; rotation degrees (UE Rotator). CineCamera filmback 36x20.25 mm (16:9), so FOV given as horizontal and vertical. Scene-local metres (Z-up) also given. Godot mapping is approximate: bridge centre = hero anchor local (3049.482,2348.281,6249.796) at deck height, bridge axis along route-hero-after bridge segment direction (0.865,0,-0.503), creek axis perpendicular (0.503,0,0.865); flow direction unverified.",
+ "time_of_day": {
+  "godot_sky_hour": 17.6,
+  "ue_sun": {
+   "pitch_deg": -9.0,
+   "yaw_offset_deg_from_backlight": -140.0,
+   "intensity_lux": 10.0,
+   "temperature_K": 4100,
+   "comment": "sun elevation ~9 deg (golden hour); azimuth set relative to the hero_low view so the low sun backlights the water"
+  }
+ },
+ "shots": [
+  {
+   "name": "hero_low",
+   "local_m": {
+    "pos": [
+     9,
+     4.162,
+     0.095
+    ],
+    "target": [
+     -3,
+     -0.936,
+     1.045
+    ]
+   },
+   "ue": {
+    "location_cm": [
+     900,
+     -416.2,
+     9.5
+    ],
+    "rotation": {
+     "roll": 0.0,
+     "pitch": 4.167,
+     "yaw": 156.985
+    },
+    "focal_mm": 22,
+    "hfov_deg": 78.58,
+    "vfov_deg": 49.43,
+    "aperture": 5.6
+   },
+   "godot_approx": {
+    "position": [
+     3057.609,
+     2347.356,
+     6255.488
+    ],
+    "look_at": [
+     3047.164,
+     2348.306,
+     6247.672
+    ],
+    "fov_vertical_deg": 49.43
+   }
+  },
+  {
+   "name": "wet_stones",
+   "local_m": {
+    "pos": [
+     -3.5,
+     -2.28,
+     0.708
+    ],
+    "target": [
+     -8.5,
+     -4.145,
+     0.033
+    ]
+   },
+   "ue": {
+    "location_cm": [
+     -350.0,
+     228.0,
+     70.8
+    ],
+    "rotation": {
+     "roll": 0.0,
+     "pitch": -7.209,
+     "yaw": 159.539
+    },
+    "focal_mm": 35,
+    "hfov_deg": 54.43,
+    "vfov_deg": 32.27,
+    "aperture": 5.6
+   },
+   "godot_approx": {
+    "position": [
+     3045.75,
+     2347.968,
+     6247.915
+    ],
+    "look_at": [
+     3041.621,
+     2347.293,
+     6244.529
+    ],
+    "fov_vertical_deg": 32.27
+   }
+  },
+  {
+   "name": "trail",
+   "local_m": {
+    "pos": [
+     -9.6,
+     -17.5,
+     2.697
+    ],
+    "target": [
+     0,
+     -3,
+     1.62
+    ]
+   },
+   "ue": {
+    "location_cm": [
+     -960.0,
+     1750.0,
+     269.7
+    ],
+    "rotation": {
+     "roll": 0.0,
+     "pitch": -3.544,
+     "yaw": -56.493
+    },
+    "focal_mm": 24,
+    "hfov_deg": 73.74,
+    "vfov_deg": 45.75,
+    "aperture": 5.6
+   },
+   "godot_approx": {
+    "position": [
+     3029.516,
+     2349.958,
+     6250.294
+    ],
+    "look_at": [
+     3046.887,
+     2348.881,
+     6251.305
+    ],
+    "fov_vertical_deg": 45.75
+   }
+  },
+  {
+   "name": "wide",
+   "local_m": {
+    "pos": [
+     15,
+     -13,
+     6.495
+    ],
+    "target": [
+     -3,
+     1.5,
+     0.445
+    ]
+   },
+   "ue": {
+    "location_cm": [
+     1500,
+     1300,
+     649.5
+    ],
+    "rotation": {
+     "roll": 0.0,
+     "pitch": -14.668,
+     "yaw": -141.147
+    },
+    "focal_mm": 20,
+    "hfov_deg": 83.97,
+    "vfov_deg": 53.7,
+    "aperture": 5.6
+   },
+   "godot_approx": {
+    "position": [
+     3045.782,
+     2353.756,
+     6269.31
+    ],
+    "look_at": [
+     3049.271,
+     2347.706,
+     6246.447
+    ],
+    "fov_vertical_deg": 53.7
+   }
+  },
+  {
+   "name": "hiker",
+   "local_m": {
+    "pos": [
+     5.5,
+     -4.6,
+     1.232
+    ],
+    "target": [
+     0,
+     -1.6,
+     1.97
+    ]
+   },
+   "ue": {
+    "location_cm": [
+     550.0,
+     460.0,
+     123.2
+    ],
+    "rotation": {
+     "roll": 0.0,
+     "pitch": 6.714,
+     "yaw": -151.39
+    },
+    "focal_mm": 35,
+    "hfov_deg": 54.43,
+    "vfov_deg": 32.27,
+    "aperture": 5.6
+   },
+   "godot_approx": {
+    "position": [
+     3048.27,
+     2348.494,
+     6256.867
+    ],
+    "look_at": [
+     3048.098,
+     2349.231,
+     6250.601
+    ],
+    "fov_vertical_deg": 32.27
+   }
+  }
+ ],
+ "hiker_still": {
+  "local_m": [
+   0.0,
+   -1.6,
+   1.02
+  ],
+  "godot_approx": [
+   3048.098,
+   2348.281,
+   6250.601
+  ],
+  "note": "hiker stands mid-stride on the bridge deck, facing along the bridge"
+ },
+ "walk_clip": {
+  "fps": 60,
+  "frames": 600,
+  "speed_mps": 1.25,
+  "camera": "3.8 m behind, 1.3 m to the side, 1.6 m up, looking 8 m ahead (same as route-hero-after camera back_m/up_m/look_ahead_m)"
+ }
+}

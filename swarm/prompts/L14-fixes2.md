@@ -1,0 +1,11 @@
+# Lane fixes2: Argon-authored fixes for the top J1 CHANGES findings (follow-up to fixes, target 2)
+
+The fixes lane skipped target 2 because ~/cs-audit/argon-day-1125/J1/INDEX.md did not exist yet. It exists now. Read it and ../fixes/RESULT.md in full first.
+
+Goal: pick the top three J1 CHANGES findings that are concrete, small, and GPU-free (prefer ones the Gemini swarm verdicts in swarm/progress.tsv also flag CHANGES). Skip any PR already assigned to the Kanpai team (282, 556, 223, 611, 230, 460, 163, 635, 627) or already fixed by an existing branch/PR (check gh pr list and git branch -r first; never duplicate).
+For each: have gemini-4-argon (via ~/.local/bin/argon, whole files as context) author the fix; you (Codex) apply it in an isolated worktree under ~/lanes/wt-gem-fix2-<PR> on branch work/gem-fix2-<PR> off the PR head, run only fast unit tests (no Godot, no Blender, no recursive greps over the repo; the Dell is overloaded), and record exact commands and full outputs.
+Commit locally on the work branch only. Do NOT push, open PRs, merge, or touch fleet/thru or /home/dellpromax/Source/Thru-2. Each fix needs a cross-family rule-25 review before it can land; note that, do not land.
+Score fairly: where the Argon patch was wrong or needed Codex correction, say so. Retry 429s with backoff; send non-authoring calls to gemini-3.8-flash.
+Deliver fixes2/RESULT.md (per-PR diff summary, test receipts, honest verdict on Argon as a code author) and log to fixes2/LOG.md. Finish by 3:15 PM PT. Last line of RESULT.md: FIXES2_DONE
+
+STEER from Trailboss 2:12 PM PT, HARD RULE (Pitcrew gate 2:10: Thru-2 worktree list grew 174 -> 246): NEVER run `git worktree add` (or commit/branch/fetch) against ~/Source/Thru-2 or any worktree of it; that writes Thru-2's .git. Use your OWN clone in your lane folder: `git clone --reference ~/Source/Thru-2 --no-checkout ~/Source/Thru-2 <lane-dir>/repo && cd <lane-dir>/repo && git remote set-url origin git@github-dot:laulpogan/Thru-2.git && git fetch origin <your work/* branch> && git checkout -B <branch> FETCH_HEAD` (or check out fleet/thru 81a73b3b50 and create your branch), then commit and push work/* from that clone. Rehearsal/baseline trees: also clones, never worktrees. Leave existing /tmp/argon-* worktrees untouched (do not prune or delete them); stop committing in them.

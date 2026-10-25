@@ -1,0 +1,120 @@
+{
+  "schema": "thru.unreal-systems.manifest/v1",
+  "lane": "unreal-systems",
+  "created_at": "2026-10-25T15:03:00-07:00",
+  "target_engine": "Unreal Engine 5.6.1 (dev-slim-5.6.1)",
+  "systems": [
+    {
+      "id": "trail-follow",
+      "spec": "trail-follow.md",
+      "script": "ue_trail_follow.py",
+      "artifacts": [
+        "trail_follow_keyframes_39p2s_dense.json",
+        "trail_follow_keyframes_36s.json",
+        "trail_follow_keyframes_10s.json"
+      ],
+      "key_metrics": {
+        "hiker_glb": "hiker_male.glb (Quaternius CC0-1.0)",
+        "walk_clip_duration_s": 1.3333,
+        "stride_length_m": 1.3575,
+        "native_speed_mps_at_rate_1": 1.0181,
+        "play_rate_for_1p40_mps": 1.3751,
+        "play_rate_for_1p35_mps": 1.3260,
+        "play_rate_for_1p25_mps": 1.2278,
+        "play_rate_for_1p15_mps": 1.1296,
+        "hiker_yaw_offset_deg": -90.0
+      }
+    },
+    {
+      "id": "audio-ambience",
+      "spec": "audio-ambience.md",
+      "script": "ue_audio_ambience.py",
+      "artifacts": [
+        "unreal_hero_36s_16lufs.wav",
+        "unreal_hero_36s_report.json",
+        "unreal_walk_62s_16lufs.wav",
+        "unreal_walk_62s_report.json",
+        "unreal_walk_10s_16lufs.wav",
+        "unreal_walk_10s_report.json"
+      ],
+      "key_metrics": {
+        "hero_36s_lufs": -16.00,
+        "hero_36s_tp_db": -1.59,
+        "walk_62s_lufs": -16.01,
+        "walk_62s_tp_db": -1.40,
+        "walk_10s_lufs": -16.11,
+        "walk_10s_tp_db": -5.60,
+        "sample_rate_hz": 48000,
+        "channels": 2
+      }
+    },
+    {
+      "id": "footstep-surfaces",
+      "spec": "footstep-surfaces.md",
+      "script": "ue_footstep_surfaces.py",
+      "artifacts": [
+        "footstep_events_36s.json"
+      ],
+      "physical_materials": [
+        "PM_Granite",
+        "PM_DecomposedGranite",
+        "PM_WoodBridge",
+        "PM_Gravel",
+        "PM_WaterSplash"
+      ]
+    },
+    {
+      "id": "time-of-day",
+      "spec": "time-of-day.md",
+      "script": "ue_time_of_day.py",
+      "artifacts": [
+        "time_of_day_hero.json"
+      ],
+      "key_metrics": {
+        "sky_hour": 17.6,
+        "trail_day": 120,
+        "sun_pitch_deg": -9.0,
+        "sun_temp_k": 4100.0,
+        "sun_lux": 10.0,
+        "altitude_haze": 0.4827,
+        "fog_density": 0.00348,
+        "exposure_bias": -0.35
+      }
+    }
+  ],
+  "licenses": {
+    "CC0-1.0": [
+      "hiker_male.glb (Quaternius)",
+      "wind_pines_soft.wav",
+      "wind_pines_medium.wav",
+      "wind_pines_strong.wav",
+      "mountain_chickadee_1583116.wav",
+      "mountain_chickadee_2127131.wav",
+      "canyon_wren_1320386.wav",
+      "hermit_thrush_241027.wav",
+      "decomposed_granite_01..04.wav",
+      "step_granite_01..04.wav",
+      "step_gravel_01..04.wav",
+      "step_wood_01..04.wav",
+      "splash_01..04.wav"
+    ],
+    "CC-BY-3.0": [
+      {
+        "files": ["creek_near.wav", "creek_far.wav", "creek_medium.wav"],
+        "title": "Stream Sounds",
+        "author": "kurt",
+        "url": "https://opengameart.org/content/stream-sounds",
+        "attribution": "Stream Sounds by kurt (https://opengameart.org/content/stream-sounds), CC-BY-3.0"
+      }
+    ],
+    "THRU-Original": [
+      "Sierra_alpine_dusk.wav",
+      "music_sierra_conifer.wav",
+      "creeks_bed.wav",
+      "creeks_melody.wav",
+      "unreal_hero_36s_16lufs.wav",
+      "unreal_walk_62s_16lufs.wav",
+      "unreal_walk_10s_16lufs.wav"
+    ]
+  }
+}

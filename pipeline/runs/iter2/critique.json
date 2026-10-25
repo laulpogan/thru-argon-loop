@@ -1,0 +1,66 @@
+{
+  "scores": {
+    "hero_low": 3.5,
+    "wet_stones": 4.0,
+    "trail": 2.5,
+    "wide": 2.5
+  },
+  "overall": 3.1,
+  "top_issues": [
+    "Conifer trees look like low-poly geometric cones with black, crushed interiors and severe alpha/normal artifacts on the fringes.",
+    "Water looks murky and olive-opaque rather than crystal-clear Sierra creek water showing warm, rocky stream beds underneath (compare to ref5/ref6).",
+    "Water shoreline intersection has an unnatural, blurry white/grey halo fade (depth fade artifact) around submerged stones in wet_stones.",
+    "Granite boulders are too uniformly smooth, bubbly, and chalky white/grey; they lack sharp fracture planes, mineral speckles, and warm iron-oxide/tannin staining in the creek bed.",
+    "Ground trail dirt looks like smooth, featureless plastic/sand with zero pebbles, pine needles, duff, or micro-topography.",
+    "Sky is completely blown out to pure white due to heavy fog inscatter and low sun pitch, lacking the deep blue/warm horizon gradient of the High Sierra."
+  ],
+  "param_changes": {
+    "light": {
+      "sun_pitch": -22.0,
+      "sun_yaw": -125.0,
+      "sun_lux": 18.0,
+      "sun_temp": 4800,
+      "sky_int": 2.5,
+      "fog_density": 0.0008,
+      "fog_inscatter": [0.65, 0.72, 0.85],
+      "exposure_bias": -0.6
+    },
+    "water": {
+      "tint": [0.45, 0.58, 0.52],
+      "opacity": 0.015,
+      "roughness": 0.01,
+      "ior": 1.333,
+      "normal_strength": 0.55,
+      "flow_speed": 0.65
+    },
+    "granite": {
+      "rough": 0.62,
+      "wet_band": 0.4,
+      "wet_dark": 0.22,
+      "wet_rough": 0.02,
+      "tint": [0.78, 0.76, 0.73]
+    },
+    "dust": {
+      "tint": [0.48, 0.41, 0.33],
+      "rough": 0.92
+    },
+    "geo": {
+      "len": 120,
+      "wid": 80,
+      "res": 600,
+      "meander": 4.8,
+      "halfw": 3.4,
+      "depth": 0.45,
+      "bankh": 0.85,
+      "trail_off": 5.2,
+      "slope": 0.025,
+      "water_h": 0.32
+    }
+  },
+  "code_suggestions": [
+    "gen.py (Trees/Foliage): Replace stacked cone geometry for pines with irregular branched clusters or proper billboard/alpha-card needle boughs, and add subsurface scattering + higher ambient occlusion floor in ue_main.py so tree interiors aren't pitch black.",
+    "ue_main.py (Water Material): Switch water to SingleLayerWater shading model (or remove the bright DepthFade shoreline opacity band) and add warm reddish-brown/ochre vertex/world-height color tinting to submerged creek-bed rocks (as seen in ref4, ref5, ref6).",
+    "gen.py (Granite & Cobbles): Add Voronoi/Worley fracture displacement and high-frequency salt-and-pepper noise to granite boulders so they look angular and crystalline rather than melted snow, and scatter dense small cobbles/gravel along the water's edge.",
+    "gen.py / ue_main.py (Terrain/Trail): Add high-frequency normal/bump noise, scattered pine needles, small granite grit, and dry grass tufts (like ref2) to break up the smooth CG sand look of the trail and banks."
+  ]
+}

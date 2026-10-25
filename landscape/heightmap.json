@@ -1,0 +1,344 @@
+{
+  "schema": "thru.unreal-heightmap/v1",
+  "region": "pct-region-0029",
+  "place": "Middle Fork San Joaquin River PCT Crossing",
+  "seed": 19980029,
+  "calendar": {
+    "year": 1998,
+    "trail_day": 120,
+    "date": "1998-06-29",
+    "sky_hour": 17.6
+  },
+  "world_origin": {
+    "wgs84_lon_lat": [
+      -119.0800196,
+      37.6538256
+    ],
+    "region_anchor_lon_lat": [
+      -119.114577068613,
+      37.7101399450746
+    ],
+    "epsg_26911_utm_m": [
+      316516.0,
+      4169444.0
+    ],
+    "godot_region_0029_local_m": [
+      3049.4802,
+      2346.6018,
+      6249.7935
+    ],
+    "godot_anchor_ground_y_m": 2346.6019,
+    "godot_bridge_deck_y_m": 2348.3049,
+    "cameras_json_bridge_center_godot_m": [
+      3049.482,
+      2348.281,
+      6249.796
+    ],
+    "cameras_json_datum_z0_m": 2347.261
+  },
+  "axis_conversion": {
+    "summary": "Godot 4 uses Y-up right-handed metres (+X=East, +Y=Up, +Z=South/-Z=North). Unreal Engine 5.6 uses Z-up left-handed centimetres (+X=Forward, +Y=Right, +Z=Up, 1 m = 100 cm).",
+    "frame_1_ue_anchor_cm": {
+      "description": "Unrotated axis-aligned frame centered at the hero anchor ground point (3049.4802, 2346.6019, 6249.7935).",
+      "position_cm": {
+        "X_ue_cm": "(X_godot_m - 3049.4802) * 100.0",
+        "Y_ue_cm": "(Z_godot_m - 6249.7935) * 100.0",
+        "Z_ue_cm": "(Y_godot_m - 2346.6019) * 100.0"
+      },
+      "inverse_godot_m": {
+        "X_godot_m": "3049.4802 + X_ue_cm / 100.0",
+        "Y_godot_m": "2346.6019 + Z_ue_cm / 100.0",
+        "Z_godot_m": "6249.7935 + Y_ue_cm / 100.0"
+      },
+      "yaw_deg": "atan2(-sin(yaw_godot), cos(yaw_godot)) in degrees (flips handedness)"
+    },
+    "frame_2_ue_bridge_frame_cameras_json": {
+      "description": "Bridge-aligned frame used by reset/unreal/CAMERAS.json and gen.py / ue_main.py. Origin is at the bridge crossing (3049.482, 2347.261, 6249.796) so bridge deck (2348.281m) is at z_local = +1.02m (+102.0 cm). +X_local is along the creek axis CAX=(0.503, 0, 0.865); +Y_local is along the bridge axis BAX=(0.865, 0, -0.503); UE Y_cm = -Y_local * 100.0 (due to glTF Y-up import axis flip AX['sy']=-1).",
+      "local_m_from_godot": {
+        "dx": "X_godot_m - 3049.482",
+        "dz": "Z_godot_m - 6249.796",
+        "x_local_m": "(0.503 * dx + 0.865 * dz) / 1.001234",
+        "y_local_m": "(0.865 * dx - 0.503 * dz) / 1.001234",
+        "z_local_m": "Y_godot_m - 2347.261"
+      },
+      "ue_cm_from_local_m": {
+        "X_ue_cm": "x_local_m * 100.0",
+        "Y_ue_cm": "-y_local_m * 100.0",
+        "Z_ue_cm": "z_local_m * 100.0"
+      },
+      "godot_from_local_m": {
+        "X_godot_m": "3049.482 + 0.503 * x_local_m + 0.865 * y_local_m",
+        "Y_godot_m": "2347.261 + z_local_m",
+        "Z_godot_m": "6249.796 + 0.865 * x_local_m - 0.503 * y_local_m"
+      }
+    }
+  },
+  "default_heightmap": {
+    "png_file": "heightmap_1009.png",
+    "raw_file": "heightmap_1009.raw",
+    "format": "16-bit unsigned integer (PNG I;16 and little-endian uint16 RAW)",
+    "resolution_px": [
+      1009,
+      1009
+    ],
+    "metres_per_pixel": 0.5,
+    "world_span_m": [
+      504.0,
+      504.0
+    ],
+    "coordinate_frame": "ue_anchor_cm",
+    "center_godot_m": [
+      3049.4802,
+      2346.6018,
+      6249.7935
+    ],
+    "min_height_m": 2339.6703,
+    "max_height_m": 2445.7415,
+    "height_range_m": 106.0713,
+    "height_at_anchor_m": 2346.3782,
+    "decode_formula_m": "height_m = 2339.670277 + (uint16_value / 65535.0) * 106.071254",
+    "ue_landscape_import": {
+      "section_size_quads": "63x63",
+      "sections_per_component": "1x1",
+      "number_of_components": "16x16",
+      "overall_resolution": "1009x1009",
+      "actor_location_cm": [
+        0.0,
+        0.0,
+        4610.4
+      ],
+      "actor_scale3d": [
+        50.0,
+        50.0,
+        20.717042
+      ]
+    }
+  },
+  "variants": {
+    "heightmap_1009": {
+      "png_file": "heightmap_1009.png",
+      "raw_file": "heightmap_1009.raw",
+      "format": "16-bit unsigned integer (PNG I;16 and little-endian uint16 RAW)",
+      "resolution_px": [
+        1009,
+        1009
+      ],
+      "metres_per_pixel": 0.5,
+      "world_span_m": [
+        504.0,
+        504.0
+      ],
+      "coordinate_frame": "ue_anchor_cm",
+      "center_godot_m": [
+        3049.4802,
+        2346.6018,
+        6249.7935
+      ],
+      "min_height_m": 2339.6703,
+      "max_height_m": 2445.7415,
+      "height_range_m": 106.0713,
+      "height_at_anchor_m": 2346.3782,
+      "decode_formula_m": "height_m = 2339.670277 + (uint16_value / 65535.0) * 106.071254",
+      "ue_landscape_import": {
+        "section_size_quads": "63x63",
+        "sections_per_component": "1x1",
+        "number_of_components": "16x16",
+        "overall_resolution": "1009x1009",
+        "actor_location_cm": [
+          0.0,
+          0.0,
+          4610.4
+        ],
+        "actor_scale3d": [
+          50.0,
+          50.0,
+          20.717042
+        ]
+      }
+    },
+    "heightmap_2017": {
+      "png_file": "heightmap_2017.png",
+      "raw_file": "heightmap_2017.raw",
+      "format": "16-bit unsigned integer (PNG I;16 and little-endian uint16 RAW)",
+      "resolution_px": [
+        2017,
+        2017
+      ],
+      "metres_per_pixel": 0.5,
+      "world_span_m": [
+        1008.0,
+        1008.0
+      ],
+      "coordinate_frame": "ue_anchor_cm",
+      "center_godot_m": [
+        3049.4802,
+        2346.6018,
+        6249.7935
+      ],
+      "min_height_m": 2334.3176,
+      "max_height_m": 2562.4312,
+      "height_range_m": 228.1136,
+      "height_at_anchor_m": 2346.3782,
+      "decode_formula_m": "height_m = 2334.317573 + (uint16_value / 65535.0) * 228.113590",
+      "ue_landscape_import": {
+        "section_size_quads": "63x63",
+        "sections_per_component": "2x2",
+        "number_of_components": "16x16",
+        "overall_resolution": "2017x2017",
+        "actor_location_cm": [
+          0.0,
+          0.0,
+          10177.25
+        ],
+        "actor_scale3d": [
+          50.0,
+          50.0,
+          44.553436
+        ]
+      }
+    },
+    "heightmap_bridge_frame_1009": {
+      "png_file": "heightmap_bridge_frame_1009.png",
+      "raw_file": "heightmap_bridge_frame_1009.raw",
+      "format": "16-bit unsigned integer (PNG I;16 and little-endian uint16 RAW)",
+      "resolution_px": [
+        1009,
+        1009
+      ],
+      "metres_per_pixel": 0.25,
+      "world_span_m": [
+        252.0,
+        252.0
+      ],
+      "coordinate_frame": "ue_bridge_frame",
+      "center_godot_m": [
+        3049.482,
+        2347.261,
+        6249.796
+      ],
+      "min_height_m": 2344.7867,
+      "max_height_m": 2389.8652,
+      "height_range_m": 45.0786,
+      "height_at_anchor_m": 2346.3782,
+      "decode_formula_m": "height_m = 2344.786673 + (uint16_value / 65535.0) * 45.078567",
+      "ue_landscape_import": {
+        "section_size_quads": "63x63",
+        "sections_per_component": "1x1",
+        "number_of_components": "16x16",
+        "overall_resolution": "1009x1009",
+        "actor_location_cm": [
+          0.0,
+          0.0,
+          2006.5
+        ],
+        "actor_scale3d": [
+          25.0,
+          25.0,
+          8.804408
+        ]
+      }
+    },
+    "heightmap_procgen_3dep_1009": {
+      "png_file": "heightmap_procgen_3dep_1009.png",
+      "raw_file": "heightmap_procgen_3dep_1009.raw",
+      "format": "16-bit unsigned integer (PNG I;16 and little-endian uint16 RAW)",
+      "resolution_px": [
+        1009,
+        1009
+      ],
+      "metres_per_pixel": 0.5,
+      "world_span_m": [
+        504.0,
+        504.0
+      ],
+      "coordinate_frame": "ue_anchor_cm",
+      "center_godot_m": [
+        3049.4802,
+        2346.6018,
+        6249.7935
+      ],
+      "min_height_m": 2338.4951,
+      "max_height_m": 2447.0752,
+      "height_range_m": 108.58,
+      "height_at_anchor_m": 2346.3782,
+      "decode_formula_m": "height_m = 2338.495135 + (uint16_value / 65535.0) * 108.580033",
+      "ue_landscape_import": {
+        "section_size_quads": "63x63",
+        "sections_per_component": "1x1",
+        "number_of_components": "16x16",
+        "overall_resolution": "1009x1009",
+        "actor_location_cm": [
+          0.0,
+          0.0,
+          4618.33
+        ],
+        "actor_scale3d": [
+          50.0,
+          50.0,
+          21.207038
+        ]
+      }
+    }
+  },
+  "splat_masks": {
+    "geomorphology_mask_1009.png": "1009x1009 8-bit RGB mask aligned with heightmap_1009.png (R=creek bed/wetness, G=trail tread dust, B=procgen-terrain inferred rock/scree).",
+    "geomorphology_mask_bridge_frame_1009.png": "1009x1009 8-bit RGB mask aligned with heightmap_bridge_frame_1009.png in the CAMERAS.json bridge-aligned frame."
+  },
+  "overlapping_godot_tiles": [
+    {
+      "id": "epsg5070-1024m--1952-1823",
+      "bounds_pos_m": [
+        1411.42724609375,
+        6373.33251953125
+      ],
+      "bounds_size_m": [
+        1252.59790039062,
+        1228.474609375
+      ]
+    },
+    {
+      "id": "epsg5070-1024m--1951-1823",
+      "bounds_pos_m": [
+        2415.00122070312,
+        6129.0927734375
+      ],
+      "bounds_size_m": [
+        1252.59741210938,
+        1228.4775390625
+      ]
+    },
+    {
+      "id": "epsg5070-1024m--1951-1824",
+      "bounds_pos_m": [
+        2165.97705078125,
+        5144.85693359375
+      ],
+      "bounds_size_m": [
+        1252.59838867188,
+        1228.4755859375
+      ]
+    },
+    {
+      "id": "epsg5070-1024m--1950-1823",
+      "bounds_pos_m": [
+        3418.57543945312,
+        5884.84912109375
+      ],
+      "bounds_size_m": [
+        1252.59741210938,
+        1228.47998046875
+      ]
+    },
+    {
+      "id": "epsg5070-1024m--1950-1824",
+      "bounds_pos_m": [
+        3169.55200195312,
+        4900.6142578125
+      ],
+      "bounds_size_m": [
+        1252.59838867188,
+        1228.478515625
+      ]
+    }
+  ]
+}

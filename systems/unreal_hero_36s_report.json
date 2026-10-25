@@ -1,0 +1,83 @@
+{
+  "out_wav": "../unreal/systems/unreal_hero_36s_16lufs.wav",
+  "duration_s": 36.0,
+  "walk_duration_s": 22.0,
+  "linger_duration_s": 14.0,
+  "sample_rate": 48000,
+  "channels": 2,
+  "measured_output_lufs": -16.01,
+  "measured_output_tp_db": -1.56,
+  "measured_output_lra": 2.6,
+  "footstep_count": 38,
+  "surfaces_used": [
+    "decomposed_granite",
+    "gravel",
+    "wood_bridge"
+  ],
+  "bird_calls_placed": [
+    {
+      "time_s": 2.4,
+      "species": "mountain_chickadee_1583116",
+      "pan": -0.45,
+      "gain": 0.2
+    },
+    {
+      "time_s": 8.8,
+      "species": "mountain_chickadee_2127131",
+      "pan": 0.4,
+      "gain": 0.18
+    },
+    {
+      "time_s": 16.2,
+      "species": "mountain_chickadee_1583116",
+      "pan": -0.3,
+      "gain": 0.17
+    },
+    {
+      "time_s": 24.5,
+      "species": "canyon_wren_1320386",
+      "pan": 0.5,
+      "gain": 0.15
+    },
+    {
+      "time_s": 31.2,
+      "species": "mountain_chickadee_2127131",
+      "pan": -0.35,
+      "gain": 0.19
+    }
+  ],
+  "sources": {
+    "creek_near": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/creek_near.wav",
+    "creek_far": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/creek_far.wav",
+    "creek_medium": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/creek_medium.wav",
+    "sierra_dusk": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/Sierra_alpine_dusk.wav",
+    "wind_soft": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/wind_pines_soft.wav",
+    "wind_medium": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/wind_pines_medium.wav",
+    "wind_strong": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/wind_pines_strong.wav",
+    "bird_chickadee_1": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/mountain_chickadee_1583116.wav",
+    "bird_chickadee_2": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/mountain_chickadee_2127131.wav",
+    "bird_canyon_wren": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/canyon_wren_1320386.wav",
+    "insects_cricket": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/insects_western_cricket.wav",
+    "music_sierra": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/music_sierra_conifer.wav",
+    "music_creeks_bed": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/creeks_bed.wav",
+    "music_creeks_melody": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/creeks_melody.wav",
+    "step_dg_01": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/decomposed_granite_01.wav",
+    "step_dg_02": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/decomposed_granite_02.wav",
+    "step_dg_03": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/decomposed_granite_03.wav",
+    "step_dg_04": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/decomposed_granite_04.wav",
+    "step_granite_01": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/step_granite_01.wav",
+    "step_granite_02": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/step_granite_02.wav",
+    "step_granite_03": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/step_granite_03.wav",
+    "step_granite_04": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/step_granite_04.wav",
+    "step_gravel_01": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/step_gravel_01.wav",
+    "step_gravel_02": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/step_gravel_02.wav",
+    "step_gravel_03": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/step_gravel_03.wav",
+    "step_gravel_04": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/step_gravel_04.wav",
+    "step_wood_01": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/step_wood_01.wav",
+    "step_wood_02": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/step_wood_02.wav",
+    "step_wood_03": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/step_wood_03.wav",
+    "step_wood_04": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/step_wood_04.wav",
+    "step_splash_01": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/splash_01.wav",
+    "step_splash_02": "/home/dellpromax/cs-audit/gemini-hackathon/reset/unreal/systems/stems/splash_02.wav"
+  }
+}

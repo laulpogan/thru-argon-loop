@@ -1,0 +1,27 @@
+{
+  "name": "campo-creek-approach",
+  "note": "Fixed AFTER route for Campo: 1.4 m/s natural walking pace (resampled along original spatial polyline), body facing aligned with forward movement via game.yaw = heading, no sideways crab-walk.",
+  "region": "pct-region-0000",
+  "start": {
+    "place": "campo_creek",
+    "lat": 32.606645,
+    "lon": -116.485568
+  },
+  "direction": 1,
+  "start_back_m": 45,
+  "duration_s": 45,
+  "fps": 30,
+  "year": 1998,
+  "sky_hour": 9.5,
+  "settle_s": 25,
+  "steer_lookahead_m": 8.0,
+  "camera": {
+    "fov": 62,
+    "back_m": 4.2,
+    "up_m": 1.8,
+    "look_ahead_m": 10.0,
+    "look_up_m": 1.3,
+    "smooth": 0.06
+  },
+  "speed_m_s": 1.4
+}

@@ -1,0 +1,462 @@
+{
+ "schema": "thru.footplants/v1",
+ "fps": 60,
+ "source": "Quaternius hiker_male 'walk' clip FK (foot_l/foot_r contact start: foot height within 1.2 cm of minimum), UE Sequencer sections from placements.json anim_segments, play_rate 1.375 (1.40 m/s / native 1.0181 m/s), clip 1.3333 s = one full gait cycle (2 steps, stride 1.3575 m, step 0.679 m)",
+ "walk_segments": [
+  {
+   "anim": "idle",
+   "start": 0,
+   "end": 360
+  },
+  {
+   "anim": "walk",
+   "start": 360,
+   "end": 1838
+  },
+  {
+   "anim": "idle",
+   "start": 1838,
+   "end": 2078
+  },
+  {
+   "anim": "walk",
+   "start": 2078,
+   "end": 2712
+  },
+  {
+   "anim": "idle",
+   "start": 2712,
+   "end": 3013
+  }
+ ],
+ "bridge_pause": "no steps during idle segments (frames 1838-2078)",
+ "note": "timeline includes the 6 s intro (360 frames) before the route starts; frame 0 = first frame of SeqWalk / the final MP4",
+ "events": [
+  {
+   "frame": 387,
+   "time_s": 6.4525,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 417,
+   "time_s": 6.9535,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 445,
+   "time_s": 7.4222,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 475,
+   "time_s": 7.9232,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 504,
+   "time_s": 8.3919,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 534,
+   "time_s": 8.8929,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 562,
+   "time_s": 9.3616,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 592,
+   "time_s": 9.8626,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 620,
+   "time_s": 10.3313,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 650,
+   "time_s": 10.8323,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 678,
+   "time_s": 11.301,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 708,
+   "time_s": 11.802,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 736,
+   "time_s": 12.2707,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 766,
+   "time_s": 12.7717,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 794,
+   "time_s": 13.2404,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 824,
+   "time_s": 13.7414,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 853,
+   "time_s": 14.2101,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 883,
+   "time_s": 14.7111,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 911,
+   "time_s": 15.1798,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 941,
+   "time_s": 15.6808,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 969,
+   "time_s": 16.1495,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 999,
+   "time_s": 16.6505,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 1027,
+   "time_s": 17.1192,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 1057,
+   "time_s": 17.6202,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 1085,
+   "time_s": 18.0889,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 1115,
+   "time_s": 18.5899,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 1144,
+   "time_s": 19.0586,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 1174,
+   "time_s": 19.5596,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 1202,
+   "time_s": 20.0283,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 1232,
+   "time_s": 20.5293,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 1260,
+   "time_s": 20.998,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 1290,
+   "time_s": 21.499,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 1318,
+   "time_s": 21.9677,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 1348,
+   "time_s": 22.4687,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 1376,
+   "time_s": 22.9374,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 1406,
+   "time_s": 23.4384,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 1434,
+   "time_s": 23.9071,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 1464,
+   "time_s": 24.4081,
+   "foot": "left",
+   "surface": "granite"
+  },
+  {
+   "frame": 1493,
+   "time_s": 24.8768,
+   "foot": "right",
+   "surface": "granite"
+  },
+  {
+   "frame": 1523,
+   "time_s": 25.3778,
+   "foot": "left",
+   "surface": "granite"
+  },
+  {
+   "frame": 1551,
+   "time_s": 25.8465,
+   "foot": "right",
+   "surface": "wood_bridge"
+  },
+  {
+   "frame": 1581,
+   "time_s": 26.3475,
+   "foot": "left",
+   "surface": "wood_bridge"
+  },
+  {
+   "frame": 1609,
+   "time_s": 26.8162,
+   "foot": "right",
+   "surface": "wood_bridge"
+  },
+  {
+   "frame": 1639,
+   "time_s": 27.3172,
+   "foot": "left",
+   "surface": "wood_bridge"
+  },
+  {
+   "frame": 1667,
+   "time_s": 27.7859,
+   "foot": "right",
+   "surface": "wood_bridge"
+  },
+  {
+   "frame": 1697,
+   "time_s": 28.2869,
+   "foot": "left",
+   "surface": "wood_bridge"
+  },
+  {
+   "frame": 1725,
+   "time_s": 28.7556,
+   "foot": "right",
+   "surface": "wood_bridge"
+  },
+  {
+   "frame": 1755,
+   "time_s": 29.2566,
+   "foot": "left",
+   "surface": "wood_bridge"
+  },
+  {
+   "frame": 1784,
+   "time_s": 29.7253,
+   "foot": "right",
+   "surface": "wood_bridge"
+  },
+  {
+   "frame": 1814,
+   "time_s": 30.2263,
+   "foot": "left",
+   "surface": "wood_bridge"
+  },
+  {
+   "frame": 2105,
+   "time_s": 35.0859,
+   "foot": "right",
+   "surface": "wood_bridge"
+  },
+  {
+   "frame": 2135,
+   "time_s": 35.5869,
+   "foot": "left",
+   "surface": "wood_bridge"
+  },
+  {
+   "frame": 2163,
+   "time_s": 36.0556,
+   "foot": "right",
+   "surface": "wood_bridge"
+  },
+  {
+   "frame": 2193,
+   "time_s": 36.5566,
+   "foot": "left",
+   "surface": "wood_bridge"
+  },
+  {
+   "frame": 2222,
+   "time_s": 37.0253,
+   "foot": "right",
+   "surface": "wood_bridge"
+  },
+  {
+   "frame": 2252,
+   "time_s": 37.5263,
+   "foot": "left",
+   "surface": "wood_bridge"
+  },
+  {
+   "frame": 2280,
+   "time_s": 37.9949,
+   "foot": "right",
+   "surface": "wood_bridge"
+  },
+  {
+   "frame": 2310,
+   "time_s": 38.496,
+   "foot": "left",
+   "surface": "wood_bridge"
+  },
+  {
+   "frame": 2338,
+   "time_s": 38.9646,
+   "foot": "right",
+   "surface": "wood_bridge"
+  },
+  {
+   "frame": 2368,
+   "time_s": 39.4657,
+   "foot": "left",
+   "surface": "wood_bridge"
+  },
+  {
+   "frame": 2396,
+   "time_s": 39.9343,
+   "foot": "right",
+   "surface": "granite"
+  },
+  {
+   "frame": 2426,
+   "time_s": 40.4354,
+   "foot": "left",
+   "surface": "granite"
+  },
+  {
+   "frame": 2454,
+   "time_s": 40.904,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 2484,
+   "time_s": 41.4051,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 2512,
+   "time_s": 41.8737,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 2542,
+   "time_s": 42.3747,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 2571,
+   "time_s": 42.8434,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 2601,
+   "time_s": 43.3444,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 2629,
+   "time_s": 43.8131,
+   "foot": "right",
+   "surface": "dg"
+  },
+  {
+   "frame": 2659,
+   "time_s": 44.3141,
+   "foot": "left",
+   "surface": "dg"
+  },
+  {
+   "frame": 2687,
+   "time_s": 44.7828,
+   "foot": "right",
+   "surface": "dg"
+  }
+ ]
+}

@@ -1,0 +1,6 @@
+- refs/ref1.jpg: https://commons.wikimedia.org/wiki/File:Granite_Creek_downstream.jpeg
+- refs/ref2.jpg: https://commons.wikimedia.org/wiki/File:Tuolumne_Meadows_-_Lyell_Fork_of_the_Tuolumne_River_-_01.JPG
+- refs/ref3.jpg: https://commons.wikimedia.org/wiki/File:Tuolumne_Meadows_-_Lyell_Fork_of_the_Tuolumne_River_-_04.jpg
+- refs/ref4.jpg: https://commons.wikimedia.org/wiki/File:Tuolumne_Meadows_-_Lyell_Fork_of_the_Tuolumne_River_-_06.JPG
+- refs/ref5.jpg: https://commons.wikimedia.org/wiki/File:Yosemite_National_Park_(CA,_USA),_Yosemite_Valley,_Tenaya_Creek_--_2022_--_2824.jpg
+- refs/ref6.jpg: https://commons.wikimedia.org/wiki/File:Yosemite_National_Park_(CA,_USA),_Yosemite_Valley,_Tenaya_Creek_--_2022_--_2831.jpg

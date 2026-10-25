@@ -1,0 +1,63 @@
+{
+  "atmosphere": {
+    "sky_hour": 17.6,
+    "trail_day": 120,
+    "latitude": 37.6538256,
+    "longitude": -119.0800196,
+    "elevation_m": 2348.28,
+    "sun_elevation_deg": 9.0,
+    "sun_pitch_ue_deg": -9.0,
+    "sun_azimuth_compass_deg": 292.471,
+    "sun_yaw_offset_from_hero_cam_deg": -140.0,
+    "daylight": 0.9323,
+    "golden": 0.7178,
+    "twilight": 0.4994,
+    "altitude_haze": 0.4827,
+    "sun_lux": 10.0,
+    "sun_temp_k": 4100.0,
+    "sky_intensity": 0.979,
+    "fog_density": 0.00348,
+    "fog_height_falloff": 0.22,
+    "fog_inscatter_rgb": [
+      0.929,
+      0.697,
+      0.565
+    ],
+    "volumetric_fog_scattering_distribution": 0.68,
+    "volumetric_fog_albedo_rgb": [
+      245,
+      220,
+      185
+    ],
+    "exposure_bias": -0.35,
+    "white_temp_k": 6100.0,
+    "bloom_intensity": 0.38,
+    "bloom_threshold": 1.05,
+    "vignette_intensity": 0.25,
+    "rayleigh_zenith_rgb": [
+      0.18,
+      0.4,
+      0.71
+    ],
+    "mie_anisotropy": 0.82
+  },
+  "cvars": {
+    "r.Lumen.TranslucencyReflections.FrontLayer.Enable": 1,
+    "r.Lumen.Reflections.ScreenTraces": 1,
+    "r.Lumen.Reflections.DownsampleFactor": 1,
+    "r.Lumen.TraceMeshSDFs": 1,
+    "r.Lumen.Scene.SurfaceCache.CardResolutionMultiplier": 2.0,
+    "r.LumenScene.Radiosity.ProbeSpacing": 2,
+    "r.Lumen.ScreenProbeGather.ScreenTraces.HZBTraversal.FullResDepth": 1,
+    "r.Nanite.MaxNodesPerFrame": 524288,
+    "r.Nanite.MaxCandidateClusters": 4194304,
+    "r.Shadow.Virtual.ResolutionLodBiasDirectional": -1.5,
+    "r.Shadow.Virtual.SMRT.RayCountDirectional": 16,
+    "r.Shadow.Virtual.Cache.MaxPageAge": 128,
+    "r.VolumetricFog.GridPixelSize": 4,
+    "r.VolumetricFog.GridSizeZ": 128,
+    "r.MotionBlurQuality": 0,
+    "r.DepthOfFieldQuality": 4,
+    "r.Tonemapper.Sharpen": 0.6
+  }
+}

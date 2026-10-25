@@ -1,0 +1,62 @@
+{
+  "scores": {
+    "hero_low": 1.5,
+    "wet_stones": 2.5,
+    "trail": 2.0,
+    "wide": 2.0
+  },
+  "overall": 2.0,
+  "top_issues": [
+    "Granite boulders have severe UV/texture artifacts (visible checkerboard faceting and contour-line stepping) and read as muddy brown clay rather than crisp light-grey speckled Sierra granite.",
+    "Pine trees are ultra-low-poly stacked cones with flat shading, zero needle alpha cards, and no bark texture, completely breaking photorealism.",
+    "Ground/trail dust is an oversaturated neon-orange smooth surface with visible polygon faceting and an artificial, ruler-straight pebble strip along the water edge.",
+    "Water lacks clarity and rocky streambed refraction; it looks like murky olive-brown gelatin rather than crystal-clear Sierra snowmelt over submerged stones.",
+    "Background sky/fog has a visible grid/checkerboard artifact and overly dense, milky orange haze that washes out depth.",
+    "`hero_low` camera is blocked by a massive, blurry, low-res foreground boulder covering 75% of the frame."
+  ],
+  "param_changes": {
+    "geo": {
+      "res": 600,
+      "meander": 4.2,
+      "halfw": 3.8,
+      "depth": 0.55,
+      "bankh": 1.1,
+      "water_h": 0.38
+    },
+    "light": {
+      "sun_pitch": -14.0,
+      "sun_yaw": -135.0,
+      "sun_lux": 12.0,
+      "sun_temp": 4600,
+      "sky_int": 1.4,
+      "fog_density": 0.003,
+      "fog_inscatter": [0.85, 0.78, 0.7],
+      "exposure_bias": -0.3
+    },
+    "water": {
+      "tint": [0.78, 0.88, 0.85],
+      "opacity": 0.06,
+      "roughness": 0.015,
+      "ior": 1.333,
+      "normal_strength": 0.35,
+      "flow_speed": 0.45
+    },
+    "granite": {
+      "rough": 0.48,
+      "wet_band": 0.55,
+      "wet_dark": 0.35,
+      "wet_rough": 0.04,
+      "tint": [0.88, 0.9, 0.94]
+    },
+    "dust": {
+      "tint": [0.62, 0.56, 0.48],
+      "rough": 0.88
+    }
+  },
+  "code_suggestions": [
+    "In gen.py / ue_main.py: Fix granite boulder UVs and normals—enable smooth vertex normals, use triplanar/world-aligned projection in the granite material to eliminate checkerboard and contour-stepping artifacts, and generate a high-frequency salt-and-pepper noise texture for granite albedo/bump.",
+    "In gen.py: Replace the low-poly stacked-cone tree meshes with higher-detail conifer geometry (irregular branch tiers, vertex-displaced foliage clusters or alpha-tested needle cards, and textured dark-brown bark trunks).",
+    "In gen.py: Scatter dense multi-scale cobbles, angular granite rocks, and submerged pebbles across the creek bed and banks (like refs 4-6) to break up the smooth ditch geometry and hide the sharp shoreline seam.",
+    "In ue_main.py: Fix the camera transform for `hero_low` so it isn't intersecting/occluded by a foreground boulder, and switch water material to SingleLayerWater shading model with refraction/absorption so submerged rocks are clearly visible."
+  ]
+}

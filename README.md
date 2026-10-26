@@ -96,7 +96,8 @@ One full cycle using real inputs: real UE5 stills plus real Sierra creek photos 
 | `managed-agents/` | Gemini Managed Agents: `setup_agents.py`, `AGENTS.json`, `run_*.py`, `ma_critic_hook.py`, `SHOWCASE.md`, `outputs/` (FIXES, task list, coverage, license audit) |
 | `swarm/` | Swarm tooling: `pilane/` (pi + Argon lanes on CPU pods), `fleetq/` (GPU/CPU job queue and fleet monitor), `prompts/` (lane prompts and launchers) |
 | `demo/` | `run_loop.sh` and `critic_fix.py`, plus saved real UE renders `renders/iter1`, `renders/iter2` |
-| `docs/` | Progression stills, Unreal journal, switch log, Godot-vs-Unreal scoring |
+| `docs/` | Progression stills, Unreal journal, switch log, Godot-vs-Unreal scoring, [`WRITEUP.md`](docs/WRITEUP.md) (full hackathon writeup), [`HIKER.md`](docs/HIKER.md) (hiker asset fixes), [`DREAMLIST.md`](docs/DREAMLIST.md) (next asset list), [`VIDEO.md`](docs/VIDEO.md) (demo video) |
+| `pipeline/pod-assetfix/` | Latest pod-side `gen.py`/`ue_main.py` and pass scripts from the hiker asset-fix runs (pod IPs redacted) |
 
 ## Built during the hackathon vs pre-existing
 

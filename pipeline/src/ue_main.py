@@ -166,7 +166,9 @@ def mat_terrain():
     dust=mul(m,dust,C(m,1.5))
     grass=tex(m,"T_PD_D",div(m,xy,C(m,200.0))) if "T_PD_D" in TEX else mul(m,dust,C(m,[0.85,0.78,0.5]))
     peb=tex(m,"T_PT_D",div(m,xy,C(m,160.0))) if "T_PT_D" in TEX else tex(m,"T_Pebble_D",uvp)
-    base=lerp(m,mul(m,dust,C(m,0.9)),grass,mask(m,mk,b=True)); base=lerp(m,base,(tex(m,"T_DG_D",div(m,xy,C(m,180.0))) if "T_DG_D" in TEX else mul(m,dust,C(m,1.12))),mask(m,mk,g=True)); base=lerp(m,base,peb,mask(m,mk,r=True))
+    base=lerp(m,mul(m,dust,C(m,0.9)),grass,mul(m,mask(m,mk,b=True),C(m,0.45))); base=lerp(m,base,(tex(m,"T_DG_D",div(m,xy,C(m,180.0))) if "T_DG_D" in TEX else mul(m,dust,C(m,1.12))),mask(m,mk,g=True)); base=lerp(m,base,peb,mask(m,mk,r=True))
+    mac=tex(m,"T_Dust_D",div(m,xy,C(m,7000.0))); mac2=tex(m,"T_Granite_D",div(m,xy,C(m,3100.0)))
+    base=mul(m,base,lerp(m,C(m,0.72),C(m,1.22),mask(m,mul(m,mac,mac2),r=True)))   # macro variation, breaks tiling
     wet=wetness(m,0.12); damp=wetness(m,0.9)
     moss=mul(m,base,C(m,[0.55,0.62,0.4]))
     base=lerp(m,base,moss,mul(m,damp,C(m,0.6)))
@@ -200,8 +202,10 @@ def mat_water():
     prop(m,df,unreal.MaterialProperty.MP_OPACITY)
     prop(m,S(m,"IOR",wpar["ior"]),unreal.MaterialProperty.MP_REFRACTION)
     return finish(m)
-def mat_simple(name,texn,tile,rough,foliage=False):
-    m=newmat(name); c=tex(m,texn,uvmesh(m,tile)); prop(m,c,unreal.MaterialProperty.MP_BASE_COLOR); prop(m,C(m,rough),unreal.MaterialProperty.MP_ROUGHNESS)
+def mat_simple(name,texn,tile,rough,foliage=False,tint=None):
+    m=newmat(name); c=tex(m,texn,uvmesh(m,tile))
+    if tint: c=mul(m,c,C(m,tint))
+    prop(m,c,unreal.MaterialProperty.MP_BASE_COLOR); prop(m,C(m,rough),unreal.MaterialProperty.MP_ROUGHNESS)
     if foliage:
         m.set_editor_property("shading_model",unreal.MaterialShadingModel.MSM_TWO_SIDED_FOLIAGE); m.set_editor_property("two_sided",True)
         prop(m,mul(m,c,C(m,[1.6,2.2,0.8])),unreal.MaterialProperty.MP_SUBSURFACE_COLOR)
@@ -228,7 +232,7 @@ def build():
     log("axis sy",AX["sy"]); json.dump(AX,open(f"{ROOT}/axis.json","w"))
     MG=mat_granite("M_Granite",1.0); MD=mat_granite("M_Dome",0.25); MT=mat_terrain(); MW=mat_water()
     load_packs()
-    MWOOD=mat_simple("M_Wood","T_Bark_D",0.6,0.75)
+    MWOOD=mat_simple("M_Wood","T_Bark_D",0.6,0.85,tint=[0.42,0.38,0.34])
     MB=mat_simple("M_Bark","T_BK_D" if "T_BK_D" in TEX else "T_Bark_D",1.0,0.85); MF=mat_simple("M_Needle","T_Needle_D",1.0,0.7,True)
     mark("materials_ok")
     if EAL.does_asset_exist("/Game/Maps/Creek"):
@@ -240,6 +244,7 @@ def build():
     wa=spawn_mesh(MESH["water"][0],unreal.Vector(0,0,0),unreal.Rotator(),1.0,MW)
     for it in PL["meshes"]:
         loc=V3([it["x"],it["y"],it["z"]]); rot=unreal.Rotator(roll=0.0,pitch=0.0,yaw=it["yaw"])
+        if any(it["mesh"].startswith(p_) for p_ in RUN.get("skip_packs",[])): continue
         if it["kind"] in ("tree","plant"):
             for sm in PACKMESH.get(it["mesh"],[]):
                 a=EAS.spawn_actor_from_object(sm,loc,rot); a.set_actor_scale3d(unreal.Vector(it["s"],it["s"],it["s"]))
@@ -312,6 +317,7 @@ def add_hiker(seq,hkeys,nframes,constant,play_rate):
         nmi=(names[i].lower() if i<len(names) else "")
         if "body" in nmi or "skin" in nmi: smc.set_material(i,OUTFIT())
         elif "hair" in nmi: smc.set_material(i,HMAT([0.06,0.045,0.035],i))
+        else: smc.set_material(i,HMAT([0.05,0.04,0.035],i))   # eyes etc: never leave a glTF MI on the hiker (its BaseColorTexture is invalid -> MRQ crash)
     b=seq.add_spawnable_from_instance(h); EAS.destroy_actor(h)
     try: add_gear(seq,hkeys,nframes,constant)
     except Exception as e: log("gear failed",e)
@@ -354,9 +360,9 @@ _OF=[]
 def OUTFIT():
     if _OF: return _OF[0]
     m=newmat("M_HikerOutfit")
-    lz=mask(m,sub(m,wp(m),nd(m,unreal.MaterialExpressionObjectPositionWS)),b=True)
+    lz=add(m,mask(m,sub(m,wp(m),nd(m,unreal.MaterialExpressionObjectPositionWS)),b=True),C(m,95.0))   # mesh origin sits at the hips (~95 cm), measured in the safety walk
     def band(z0): return sat(m,div(m,sub(m,lz,C(m,z0)),C(m,3.0)))
-    boots=C(m,[0.07,0.045,0.03]); pants=C(m,[0.36,0.31,0.21]); belt=C(m,[0.1,0.08,0.06])
+    boots=C(m,[0.07,0.045,0.03]); pants=C(m,[0.035,0.032,0.03]); belt=C(m,[0.1,0.08,0.06])
     # flannel shirt: red/black check from world-space sin pattern
     w=wp(m); sx=nd(m,unreal.MaterialExpressionSine,period=14.0); cn(mask(m,w,r=True),sx,""); sy=nd(m,unreal.MaterialExpressionSine,period=14.0); cn(mask(m,w,b=True),sy,"")
     chk=sat(m,mul(m,add(m,sx,sy),C(m,2.0))); shirt=lerp(m,C(m,[0.32,0.05,0.04]),C(m,[0.05,0.03,0.03]),mul(m,chk,C(m,0.55)))
@@ -365,11 +371,13 @@ def OUTFIT():
     prop(m,col,unreal.MaterialProperty.MP_BASE_COLOR); prop(m,C(m,0.85),unreal.MaterialProperty.MP_ROUGHNESS)
     _OF.append(finish(m)); return _OF[0]
 def add_gear(seq,hkeys,nframes,constant):
-    MP=HMAT([0.12,0.2,0.14],90); MH=HMAT([0.55,0.45,0.3],91)
-    for nm,mat,fwd,up in (("backpack",MP,-0.20,1.22),("hat",MH,0.0,1.66)):
+    MP=mat_simple("M_Pack","T_Pack_D",1.0,0.85) if "T_Pack_D" in TEX else HMAT([0.3,0.06,0.05],90); MH=HMAT([0.55,0.45,0.3],91)
+    real_pack="T_Pack_D" in TEX
+    for nm,mat,fwd,up,sc,yo in (("backpack",MP,(-0.27 if real_pack else -0.20),(0.82 if real_pack else 1.22),(0.72 if real_pack else 1.0),float(RUN.get("pack_yaw",0.0))),("hat",MH,0.0,1.66,1.0,0.0)):
         if nm not in MESH: log("no gear mesh",nm); continue
         a=EAS.spawn_actor_from_object(MESH[nm][0],V3(hkeys[0]["pos"]),unreal.Rotator())
-        a.static_mesh_component.set_material(0,mat); a.static_mesh_component.set_mobility(unreal.ComponentMobility.MOVABLE)
+        for i_ in range(max(1,a.static_mesh_component.get_num_materials())): a.static_mesh_component.set_material(i_,mat)
+        a.static_mesh_component.set_mobility(unreal.ComponentMobility.MOVABLE); a.set_actor_scale3d(unreal.Vector(sc,sc,sc))
         b=seq.add_spawnable_from_instance(a); EAS.destroy_actor(a)
         tt=b.add_track(unreal.MovieScene3DTransformTrack); ts=tt.add_section(); ts.set_range(0,nframes); ch=ts.get_all_channels()
         interp=unreal.MovieSceneKeyInterpolation.CONSTANT if constant else unreal.MovieSceneKeyInterpolation.LINEAR
@@ -381,7 +389,9 @@ def add_gear(seq,hkeys,nframes,constant):
                 while yaw-prev>180: yaw-=360
                 while yaw-prev<-180: yaw+=360
             prev=yaw
-            for i,v in enumerate([loc.x,loc.y,loc.z,0.0,0.0,yaw]): ch[i].add_key(unreal.FrameNumber(k["f"]),v,0.0,unreal.MovieSceneTimeUnit.DISPLAY_RATE,interp)
+            for i,v in enumerate([loc.x,loc.y,loc.z,0.0,0.0,yaw+yo]): ch[i].add_key(unreal.FrameNumber(k["f"]),v,0.0,unreal.MovieSceneTimeUnit.DISPLAY_RATE,interp)
+            for i,v in enumerate([sc,sc,sc]):
+                if len(ch)>6+i: ch[6+i].add_key(unreal.FrameNumber(k["f"]),v,0.0,unreal.MovieSceneTimeUnit.DISPLAY_RATE,interp)
     log("gear ok")
 HIKER_YAW=float(RUN.get("hiker_yaw",-90.0))
 _HM={}

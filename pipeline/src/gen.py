@@ -21,14 +21,46 @@ def fbm2(n,octs=6,seed=0,base=4):
 # ---------- terrain ----------
 L,W,N=P["len"],P["wid"],P["res"]
 xs=np.linspace(-L/2,L/2,N); ys=np.linspace(-W/2,W/2,N); X,Y=np.meshgrid(xs,ys,indexing='xy')
-def center(x): return P["meander"]*np.sin(x/11.0)+1.2*np.sin(x/4.3+1)
-def halfw(x): return P["halfw"]+0.8*np.sin(x/7.1)
-d=np.abs(Y-center(X)); hw=halfw(X)
+REALD=os.environ.get("REAL_DIR","/workspace/unreal/real")
+REAL=os.path.exists(f"{REALD}/heightmap_bridge_frame_1009.raw") and os.environ.get("NO_REAL")!="1"
+if REAL:
+    from scipy.spatial import cKDTree
+    from scipy.ndimage import gaussian_filter1d, map_coordinates
+    _H=json.load(open(f"{REALD}/heightmap.json"))["variants"]["heightmap_bridge_frame_1009"]
+    _u=np.fromfile(f"{REALD}/heightmap_bridge_frame_1009.raw",dtype="<u2").reshape(1009,1009)
+    HREAL=_H["min_height_m"]+_u/65535*_H["height_range_m"]-2347.261
+    def hreal(x,y): return map_coordinates(HREAL,[np.clip((np.asarray(y)+126)/0.25,0,1008),np.clip((np.asarray(x)+126)/0.25,0,1008)],order=1,mode="nearest")
+    _cp=np.array([p["local_m"] for p in json.load(open(f"{REALD}/creek_spline.json"))["resampled_1m_points"]])
+    _cp=_cp[(np.abs(_cp[:,0])<200)]
+    _cp[:,0]=gaussian_filter1d(_cp[:,0],3,mode="nearest"); _cp[:,1]=gaussian_filter1d(_cp[:,1],3,mode="nearest")
+    _wz=gaussian_filter1d(_cp[:,2],8,mode="nearest")
+    if _cp[0,0]>_cp[-1,0]: _cp=_cp[::-1]; _wz=_wz[::-1]
+    _wz=np.minimum.accumulate(_wz)    # water only ever flows downhill (+x, verified NHD/D8 direction)
+    _wz=_wz-np.interp(0,_cp[:,0],_wz)-0.13   # water 1.15 m under the deck at the crossing
+    _seg=np.linspace(0,1,len(_cp)); _dense=np.linspace(0,1,len(_cp)*4)
+    CP=np.c_[np.interp(_dense,_seg,_cp[:,0]),np.interp(_dense,_seg,_cp[:,1])]; CWZ=np.interp(_dense,_seg,_wz)
+    _kd=cKDTree(CP)
+    HW_REAL=1.45
+    def center(x): return np.interp(x,CP[:,0],CP[:,1])
+    def halfw(x): return HW_REAL+0.25*np.sin(np.asarray(x,float)/7.1)
+    def zw_real(x): return np.interp(x,CP[:,0],CWZ)
+    _dd,_ii=_kd.query(np.c_[X.ravel(),Y.ravel()]); d=_dd.reshape(X.shape); WZG=CWZ[_ii].reshape(X.shape); hw=halfw(X)
+    print("REAL terrain on; creek pts",len(CP))
+else:
+    def center(x): return P["meander"]*np.sin(x/11.0)+1.2*np.sin(x/4.3+1)
+    def halfw(x): return P["halfw"]+0.8*np.sin(x/7.1)
+    d=np.abs(Y-center(X)); hw=halfw(X)
 n1=fbm2(N,6,1,3); n2=fbm2(N,5,2,12)
 bank=np.clip((d-hw)/6.0,0,1)
 Z=-P["depth"]*np.clip(1-(d/hw)**2,0,1) + bank**1.4*P["bankh"] + (n1-0.5)*1.6*bank + (n2-0.5)*0.12
 Z+=np.clip((np.abs(Y)-W*0.3)/(W*0.2),0,1)**2*6  # rising valley walls
 Z+= -X*P["slope"]  # downhill toward -x? flow toward +x lower
+if REAL:
+    Zr=hreal(X,Y)
+    prof=np.where(d<hw, WZG-0.42*np.clip(1-(d/hw)**2,0,1)-0.02, WZG+0.22+(d-hw)*0.32+(n1-0.5)*0.5*np.clip((d-hw)/4,0,1))
+    wbl=np.clip((d-hw)/7.0,0,1); wbl=wbl*wbl*(3-2*wbl)
+    Z=prof*(1-wbl)+Zr*wbl+(n2-0.5)*0.08
+    Z=np.where(d>hw+0.3,np.maximum(Z,WZG+0.18),Z)
 # ---- real THRU route (Godot route-hero-after.json), mapped to local frame: origin = bridge centre, +y along bridge, +x along creek
 RT=json.load(open(os.path.join(OUT,"route-hero-after.json")))
 BC=np.array([3049.5,6249.8]); BAX=np.array([0.865,-0.503]); CAX=np.array([0.503,0.865])
@@ -71,6 +103,11 @@ json.dump({"L":L,"W":W},open(os.path.join(OUT,"terrain.json"),"w"))
 wx=np.linspace(-L/2,L/2,600); wv=np.linspace(-1,1,60); WX,WV=np.meshgrid(wx,wv,indexing='xy')
 WY=center(WX)+WV*(halfw(WX)*0.97)
 WZ=np.full_like(WX,0.0)-P["depth"]+P["water_h"]-WX*P["slope"]
+if REAL:
+    _m=(np.abs(CP[:,0])<L/2+30)&(np.abs(CP[:,1])<W/2+30); C2=CP[_m]; Z2=CWZ[_m]
+    tg=np.gradient(C2,axis=0); tg/=np.linalg.norm(tg,axis=1,keepdims=True); nrm=np.c_[-tg[:,1],tg[:,0]]
+    hw2=halfw(C2[:,0])*0.98+0.05
+    WX=C2[None,:,0]+wv[:,None]*hw2[None,:]*nrm[None,:,0]; WY=C2[None,:,1]+wv[:,None]*hw2[None,:]*nrm[None,:,1]; WZ=np.repeat(Z2[None,:],len(wv),0)
 save("water",[grid_mesh(WX,WY,WZ,np.c_[WX.ravel()/3.0,WY.ravel()/3.0])])
 # ---------- boulders ----------
 def boulder(seed,sx,sy,sz,sub=4):
@@ -159,7 +196,7 @@ nd=fbm2(T,5,42,32); tex("T_Needle_D",np.dstack([0.09+0.04*nd,0.16+0.06*nd,0.08+0
 # ---------- probe for axis detection ----------
 pr=trimesh.creation.box((1,1,1)); pr.apply_translation([20,10,5]); pr.visual=trimesh.visual.TextureVisuals(uv=np.zeros((len(pr.vertices),2))); save("probe",[pr])
 # ---------- bridge (wooden PCT footbridge, crossing at x=0 along y) ----------
-zw=lambda x: -P["depth"]+P["water_h"]-x*P["slope"]
+zw=(lambda x: zw_real(x)) if REAL else (lambda x: -P["depth"]+P["water_h"]-x*P["slope"])
 DECK=zw(0)+1.15; BL=2*BRIDGE_HALF; BW=1.5
 def box(c,sz):
     b=trimesh.creation.box(sz); b.apply_translation(c); v=b.vertices; n=b.vertex_normals
@@ -187,7 +224,7 @@ def ridge_mesh(seed,r0,a0,a1,hmax):
     Zr=crest[None,:]*np.clip(1-(T*1.0),0,1)**0.8-25
     X_=R*np.cos(A); Y_=R*np.sin(A)
     return grid_mesh(X_,Y_,Zr,np.c_[A.ravel()*r0/20,Zr.ravel()/20])
-save("ridge",[ridge_mesh(11,330,120,250,95),ridge_mesh(12,420,-70,60,120),ridge_mesh(13,520,240,300,150)])
+save("ridge",[ridge_mesh(11,300,110,255,150),ridge_mesh(12,380,-80,70,185),ridge_mesh(13,470,235,305,210)])
 
 # ---- outer skirt terrain out to 1.2 km so no map edge is ever visible; rises toward the skyline ridges
 NS=260; sx=np.linspace(-600,600,NS); SXg,SYg=np.meshgrid(sx,sx,indexing='xy'); rr_=np.hypot(SXg,SYg)
@@ -209,6 +246,8 @@ from scipy.interpolate import RegularGridInterpolator
 ZI=RegularGridInterpolator((ys,xs),Z)
 zf=lambda x,y: float(ZI([[np.clip(y,-W/2,W/2),np.clip(x,-L/2,L/2)]])[0])
 pl={"meshes":[],"water_z0":-P["depth"]+P["water_h"],"slope":P["slope"],"L":L,"W":W,"deck_z":DECK}
+if REAL:
+    _xx=np.linspace(-50,50,101); _b,_a=np.polyfit(_xx,zw(_xx),1); pl["water_z0"]=float(_a); pl["slope"]=float(-_b); print("water plane",_a,_b)
 def put(mesh,x,y,z,yaw,s=1.0,kind="rock"): pl["meshes"].append({"mesh":mesh,"x":float(x),"y":float(y),"z":float(z),"yaw":float(yaw),"s":float(s),"kind":kind})
 put("bridge",0,0,0,0,1.0,"bridge")
 r=np.random.default_rng(3)
@@ -295,10 +334,15 @@ while n<46 and tries<5000:  # Evermotion AM283 + THRU conifers upslope
 pk=trimesh.creation.box([0.30,0.40,0.55]); pk.apply_translation([0,0,0]); bed=trimesh.creation.cylinder(radius=0.09,height=0.42,sections=16); bed.apply_transform(trimesh.transformations.rotation_matrix(np.pi/2,[1,0,0])); bed.apply_translation([0,0,-0.33])
 for m_ in (pk,bed): m_.visual=trimesh.visual.TextureVisuals(uv=m_.vertices[:,:2])
 save("backpack",[trimesh.util.concatenate([pk,bed])])
+_PKG="/workspace/unreal/packs/gear/hiker_pack_1990s.glb"
+if os.path.exists(_PKG):
+    import shutil; shutil.copy(_PKG,os.path.join(OUT,"backpack.glb"))
+    for _src,_dst in (("pack_D.png","T_Pack_D.png"),("pack_N.png","T_Pack_N.png")):
+        if os.path.exists(f"/workspace/unreal/packs/gear/{_src}"): shutil.copy(f"/workspace/unreal/packs/gear/{_src}",os.path.join(OUT,_dst))
 crown=trimesh.creation.cylinder(radius=0.10,height=0.11,sections=24); crown.apply_translation([0,0,0.055]); brim=trimesh.creation.cylinder(radius=0.19,height=0.012,sections=32)
 for m_ in (crown,brim): m_.visual=trimesh.visual.TextureVisuals(uv=m_.vertices[:,:2])
 save("hat",[trimesh.util.concatenate([crown,brim])])
-def cam(name,px,py,pz,tx,ty,tz,fl=35): return {"name":name,"pos":[px,py,pz],"tgt":[tx,ty,tz],"fl":fl}
+def cam(name,px,py,pz,tx,ty,tz,fl=35): return {"name":name,"pos":[px,py,max(pz,zf(px,py)+0.35)],"tgt":[tx,ty,tz],"fl":fl}
 HIKER_STILL=[0.0,-1.6,DECK]
 _cum=np.r_[0,np.cumsum(np.linalg.norm(np.diff(TRAIL,axis=0),axis=1))]; _ib=int(np.argmax(onb)); _it=int(np.argmin(np.abs(_cum-(_cum[_ib]-12))))
 TCX,TCY=float(TRAIL[_it,0]),float(TRAIL[_it,1])
@@ -359,6 +403,32 @@ if os.path.exists(DP):
     segs=[sg for sg in segs if sg["end"]-sg["start"]>=10 or sg["anim"]=="walk"]
     pl["anim_segments"]=segs; NF=END+OUTRO; SPEED=1.4
     print("dense route",len(DR),"frames; total",NF,"segments",[(sg["anim"],sg["start"],sg["end"]) for sg in segs])
+# path hygiene (Trailboss 15:49): no fern / procedural faceted boulders / broadleaf trees crowding the walk path or cameras
+_wc=np.array([w["pos"][:2] for w in walk]) if walk else np.zeros((0,2))
+def _near_path(x,y,r):
+    dd=float(trail_dist(x,y)); dc=np.min(np.hypot(_wc[:,0]-x,_wc[:,1]-y)) if len(_wc) else 1e9
+    return dd<r or dc<r
+def _segd(px,py,a,b):
+    a=np.array(a[:2]); b=np.array(b[:2]); d=b-a; t=np.clip(((px-a[0])*d[0]+(py-a[1])*d[1])/(d@d+1e-9),0,1); return float(np.hypot(px-a[0]-t*d[0],py-a[1]-t*d[1])), t
+def _near_cams(x,y):   # nothing may block a still camera: clear 2.5 m around the first 70% of each camera->target line
+    for sh in shots:
+        dd,t=_segd(x,y,sh["pos"],sh["tgt"])
+        if dd<2.5 and t<0.7: return True
+    return False
+_keep=[]
+for it in pl["meshes"]:
+    m_=it["mesh"]; x_,y_=it["x"],it["y"]
+    if m_.startswith("polyhaven_fern"): continue   # "broadleaf houseplants" (critic): removed
+    if m_.startswith("hero_granite"):   # faceted, crumpled look in UE: swap for Arnklit purchased boulders
+        it=dict(it); it["mesh"]=["namaqualand_boulder_02","namaqualand_boulder_03"][int(abs(x_*7.3+y_*3.1))%2]; it["kind"]="plant"
+    if m_ in ("jeffrey_open_LOD0","fir_white_tall_LOD0","fir_red_mature_LOD0") and _near_path(x_,y_,45.0):
+        it=dict(it); it["mesh"]=["fir_white_tall_LOD0","fir_red_mature_LOD0"][int(abs(x_*5.7+y_*2.3))%2]
+    if it["kind"]=="rock" and m_.startswith("boulder") and _near_path(x_,y_,4.0): continue
+    if m_.startswith("riparian_") and _near_path(x_,y_,6.0): continue
+    if it["mesh"].startswith("arnklit_") and _near_path(x_,y_,8.0): it=dict(it); it["mesh"]=["namaqualand_boulder_02","namaqualand_boulder_03"][int(abs(x_*3.3+y_))%2]
+    if it["kind"]!="bridge" and _near_cams(x_,y_): continue
+    _keep.append(it)
+print("path hygiene removed",len(pl["meshes"])-len(_keep)); pl["meshes"]=_keep
 pl["shots"]=shots; pl["walk"]=walk; pl["hiker_walk"]=hk; pl["hiker_still"]=HIKER_STILL; pl["walk_speed"]=SPEED; pl["walk_fps"]=60; pl["walk_frames"]=NF; pl["trail"]=TRAIL.tolist()
 json.dump(pl,open(os.path.join(OUT,"placements.json"),"w"),indent=0)
 print("GEN_OK",len(pl["meshes"]))

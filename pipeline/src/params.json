@@ -12,49 +12,49 @@
   "water_h": 0.34
  },
  "light": {
-  "sun_pitch": -9.0,
+  "sun_pitch": -13.5,
   "sun_yaw": -140.0,
-  "sun_lux": 14.0,
-  "sun_temp": 4100,
-  "sky_int": 1.2,
-  "fog_density": 0.011,
+  "sun_lux": 26.0,
+  "sun_temp": 4250,
+  "sky_int": 1.65,
+  "fog_density": 0.0028,
   "fog_inscatter": [
    1.0,
    0.8,
    0.6
   ],
-  "exposure_bias": -0.3
+  "exposure_bias": 0.1
  },
  "water": {
   "tint": [
-   0.3,
-   0.45,
-   0.42
+   0.18,
+   0.36,
+   0.4
   ],
-  "opacity": 0.05,
-  "roughness": 0.02,
+  "opacity": 0.22,
+  "roughness": 0.08,
   "ior": 1.33,
-  "normal_strength": 0.4,
-  "flow_speed": 0.35
+  "normal_strength": 0.65,
+  "flow_speed": 0.48
  },
  "granite": {
-  "rough": 0.6,
-  "wet_band": 0.5,
-  "wet_dark": 0.38,
-  "wet_rough": 0.04,
+  "rough": 0.78,
+  "wet_band": 0.22,
+  "wet_dark": 0.45,
+  "wet_rough": 0.14,
   "tint": [
-   0.92,
-   0.92,
-   0.94
+   0.82,
+   0.83,
+   0.81
   ]
  },
  "dust": {
   "tint": [
-   1.0,
-   1.0,
-   1.0
+   0.72,
+   0.68,
+   0.62
   ],
-  "rough": 0.92
+  "rough": 0.88
  },
  "cam": {
   "fov": 55

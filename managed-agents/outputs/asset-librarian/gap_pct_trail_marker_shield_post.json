@@ -1,0 +1,88 @@
+{
+ "name": "pct_trail_marker_shield_post",
+ "category": "props",
+ "pct_section": "trail towns/roads/vehicles/gear",
+ "description": "The official Pacific Crest National Scenic Trail route marker mounted on a rugged western redcedar timber signpost. The triangular emblem is the ubiquitous 3-sided National Scenic Trail shield marker (approximately 9x9 inches / 23x23 cm) authorized by the National Trails System Act and United States Forest Service. Features an enameled triangular white background with a hunter-green border, stylized green triangle conifer silhouette, snow-white triangular mountain peak, blue sky triangular field, and embossed uppercase typography 'PACIFIC CREST TRAIL - NATIONAL SCENIC TRAIL'. The shield is affixed with galvanized nails to a rustic 4x4-inch rough-sawn cedar post featuring a 45-degree bevelled top cap, weathered silvery-gray grain, and subtle routed directional arrow or mileage blazes.",
+ "real_world_references": [
+  {
+   "url": "https://commons.wikimedia.org/wiki/File:Pacific_Crest_Trail_sign.jpg",
+   "title": "Pacific Crest Trail sign on routed cedar post",
+   "author": "Steven Pavlov",
+   "license": "CC-BY-SA-4.0"
+  },
+  {
+   "url": "https://commons.wikimedia.org/wiki/File:Pct-logo.svg",
+   "title": "The official logo of the Pacific Crest Trail",
+   "author": "MikOGNN (based on US Forest Service / National Park Service design)",
+   "license": "CC-BY-SA-4.0"
+  },
+  {
+   "url": "https://commons.wikimedia.org/wiki/File:Pacific_Crest_National_Scenic_Trail,_California.jpg",
+   "title": "Pacific Crest National Scenic Trail, California",
+   "author": "Bureau of Land Management",
+   "license": "Public Domain"
+  }
+ ],
+ "dimensions_m": {
+  "height": 1.75,
+  "width": 0.28,
+  "depth": 0.22
+ },
+ "materials": [
+  {
+   "slot": "mat_enameled_aluminum_shield",
+   "description": "Heavy-gauge stamped aluminum triangular shield with baked enamel semi-gloss coating. Shows crisp green, white, and blue screen printing, slight edge chipping, weather fading, and two recessed mounting nail holes with subtle oxidation streaks.",
+   "pbr_hints": {
+    "albedo_rgb": [
+     0.92,
+     0.92,
+     0.91
+    ],
+    "roughness": 0.35,
+    "metallic": 0.15,
+    "normal_depth_scale": 0.4
+   }
+  },
+  {
+   "slot": "mat_weathered_cedar_post",
+   "description": "Rough-sawn 4x4 western redcedar timber weathered to silvery grey by montane UV and snowpack, with deep longitudinal shrinkage checks, wood grain relief, and lichen flecks near ground line.",
+   "pbr_hints": {
+    "albedo_rgb": [
+     0.46,
+     0.44,
+     0.42
+    ],
+    "roughness": 0.86,
+    "metallic": 0.0,
+    "normal_depth_scale": 1.0
+   }
+  },
+  {
+   "slot": "mat_galvanized_fasteners",
+   "description": "Galvanized steel flat-head roofing nails with zinc coating and minor rust halos where driven through aluminum into timber.",
+   "pbr_hints": {
+    "albedo_rgb": [
+     0.4,
+     0.38,
+     0.36
+    ],
+    "roughness": 0.55,
+    "metallic": 0.75
+   }
+  }
+ ],
+ "lod_targets": {
+  "lod0_tris": 14500,
+  "lod1_tris": 4800,
+  "lod2_tris": 1200,
+  "impostor": false
+ },
+ "placement_notes": "Essential navigational hero prop placed trail-wide at wilderness trail junctions, logging road crossings, trailhead junctions, and boundary crossings from Campo to the Canadian border. Placed alongside trail tread at ground level with post sunk 0.4m into mineral soil.",
+ "priority": "P0",
+ "_provenance": {
+  "agent": "thru-asset-librarian",
+  "interaction_id": "v1_Chc3NFRlYXE3RkFvTFNfUFVQdzZxNjhBOBIXNzRUZWFxN0ZBb0xTX1BVUHc2cTY4QTg",
+  "environment_id": "f25944c6786d2940cc0acbaafbb05e06",
+  "job": "gap-analysis vs assets/built inventory"
+ }
+}

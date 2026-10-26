@@ -1,0 +1,5 @@
+build-gcc/
+build-clang/
+build/
+*.o
+*.a

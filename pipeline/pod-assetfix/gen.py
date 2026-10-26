@@ -424,7 +424,7 @@ _keep=[]
 for it in pl["meshes"]:
     m_=it["mesh"]; x_,y_=it["x"],it["y"]
     if m_.startswith("polyhaven_fern"): continue   # "broadleaf houseplants" (critic): removed
-    if m_.startswith("hero_granite"):   # faceted, crumpled look in UE: swap for Arnklit purchased boulders
+    if m_.startswith("hero_granite"):   # faceted, crumpled look in UE: swap for Poly Haven (CC0) Namaqualand boulders
         it=dict(it); it["mesh"]=["namaqualand_boulder_02","namaqualand_boulder_03"][int(abs(x_*7.3+y_*3.1))%2]; it["kind"]="plant"
     if m_ in ("jeffrey_open_LOD0","fir_white_tall_LOD0","fir_red_mature_LOD0") and _near_path(x_,y_,45.0):
         it=dict(it); it["mesh"]=["fir_white_tall_LOD0","fir_red_mature_LOD0"][int(abs(x_*5.7+y_*2.3))%2]

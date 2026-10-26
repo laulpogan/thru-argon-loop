@@ -418,7 +418,7 @@ def OUTFIT():
     prop(m,col,unreal.MaterialProperty.MP_BASE_COLOR); prop(m,C(m,0.85),unreal.MaterialProperty.MP_ROUGHNESS)
     _OF.append(finish(m)); return _OF[0]
 def add_gear(seq,hkeys,nframes,constant):
-    MP=HMAT([0.06,0.11,0.06],90)  # dark green pack, distinct from shirt (1628); MH=HMAT([0.55,0.45,0.3],91)
+    MP=HMAT([0.06,0.11,0.06],90); MH=HMAT([0.55,0.45,0.3],91)  # dark green pack, distinct from shirt (1628)
     real_pack="T_Pack_D" in TEX
     for nm,mat,fwd,up,sc,yo in (("backpack",MP,(-0.27 if real_pack else -0.20),(0.82 if real_pack else 1.22),(0.72 if real_pack else 1.0),float(RUN.get("pack_yaw",0.0))),("hat",MH,0.0,1.66,1.0,0.0)):
         if nm not in MESH: log("no gear mesh",nm); continue

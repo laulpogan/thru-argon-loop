@@ -4,6 +4,8 @@
 **Sprint Date:** Sunday, October 25, 2026 (11:25 AM PT – 3:32 PM PT snapshot; 5:00 PM PT judging)  
 **Repository:** `laulpogan/Thru-2` (hackathon artifacts in `~/cs-audit/gemini-hackathon`)
 
+> **Scope of this writeup.** It is a 3:32 PM PT snapshot taken from the private hackathon workspace (`~/cs-audit/gemini-hackathon`). Most file paths below (`after/`, `compare/`, `reset/`, `handoffs/`, `audio/` and the `calls.jsonl` totals) point into that workspace and are **not** in this public repo. Images that do exist here are linked from [`docs/progression/`](progression/) and [`docs/compare/`](compare/). The submitted video is the no-hiker cut, `final_v5_nohiker.mp4` (see [`VIDEO.md`](VIDEO.md)); the clothed-hiker work in [`HIKER.md`](HIKER.md) came after the deadline and is not in it. The Gemini Managed Agents runs (all on `gemini-3.8-flash`, interaction IDs in [`managed-agents/RUNS.jsonl`](../managed-agents/RUNS.jsonl)) are covered in [`managed-agents/NOTES.md`](../managed-agents/NOTES.md), not here.
+
 ---
 
 ## 1. Headline Numbers & Models Used
@@ -220,7 +222,7 @@ Honest accounting matters: **`fleet/thru` head did not move (`101a52b40e`)** dur
 - **Argon Way:** We split audio across four specialized pipelines combining Google's generative audio models (for music and NPC speech) with licensed CC0/CC-BY-3.0 field recordings and physical acoustic modeling (after SOTA & listening gates confirmed generated foley sounded artificial):
   - **Candidate Soundtrack & Voice Pack (`audio/RESULT.md`, completed 13:20 PT):** **1,355 metadata-recorded calls** (662 `gemini-4-argon`, 234 `gemini-3.1-pro-preview`, 148 `lyria-3-clip-preview`, 112 `lyria-3.5`, 60 `lyria-3-pro-preview`, 61 `gemini-3.5-transcribe`, 25 `gemini-3.8-flash-tts`, 25 `gemini-3.8-flash-lite-tts`, 25 `gemini-3.8-flash`, 1 `gemini-2.5-pro-preview-tts`, 1 `gemini-3.1-flash-tts-preview`, 1 `models`). Produced **400 catalog entries (3.26 GB)** with **232 model-retained**: **55 music pieces (40.8 minutes)** from 316 Lyria attempts covering **37/54 cue roles**, **42 NPC voice lines across 12 voices** verified by `gemini-3.5-transcribe`, **80 ambience** and **55 effects** entries, and **114 verified seamless OGG/WAV loops**.
   - **6-Layer Adaptive Score (`reset/music/RESULT.md`):** Parameterised generator (`build_score.py`) using a phase-coherent 4th-order Linkwitz-Riley linear-phase FFT crossover at `1600 Hz` (`Foundation <= 1.6 kHz`, `Motion > 1.6 kHz`) across Chaparral (50.0 s), Montane (54.0 s), and Night (60.0 s) with loop boundary steps of $1.69 \times 10^{-9}$ to $4.07 \times 10^{-9}\text{ FS}$. Scored **9.67/10** from the Argon critic and passed headless Godot 4.7.2 verification (`argon_music_proof.gd`, exit 0).
-  - **Unreal Engine Hero Audio Pack (`reset/unreal/import/audio/` & `reset/audiomix/`):** 100% YouTube-safe, copyright-clean stems and masters synced to the hiker's exact footplant frames (`systems/footplants_final.json`):
+  - **Unreal Engine Hero Audio Pack (`reset/unreal/import/audio/` & `reset/audiomix/`):** stems and masters from CC0 and CC-BY-3.0 sources (CC-BY needs attribution), with footsteps timed to the hiker's footplant frames (`systems/footplants_final.json`). The submitted video is the no-hiker cut, so no on-screen hiker is synced to them:
     - **Field Foley (`foley/`):** 8 dirt/gravel step variants, 6 wet-stone step variants, 8 hollow wooden bridge boot steps (`bridge_steps_01..08.wav`), 6 timber plank flex creaks (`bridge_creak_01..06.wav`, triggered 40–120 ms after heel strike), 6 backpack rustle one-shots + loop, and 3-distance creek loops (`creek_distant_loop.wav`, `creek_mid_loop.wav`, `creek_close_babble_loop.wav`) + `creek_passby_surge.wav` (CC0 Freesound + CC-BY-3.0 `kurt` on OpenGameArt).
     - **Sierra Bird Ecology (`birds/`):** 60.0 s seamless stereo beds (`birds_dawn_sparse_loop.wav` at `-22.5 LUFS`, `birds_hero_bed_loop.wav` at `-18.8 LUFS`) plus **26 mono 3D one-shot WAVs** across 8 species: Mountain Chickadee (4), Hermit Thrush (4), Dark-eyed Junco (3), Steller's Jay (3), American Dipper (3, creek boulders 8–28 m), White-crowned Sparrow (3), Pacific Wren (3), and Clark's Nutcracker (3, restricted to `>2,600 m` ridges and excluded from the `2,348 m` creek bed), governed by a Poisson no-repeat permutation spec.
     - **Candidate Mix & Stems (Pending Listening Review):** `reset/unreal/import/audio/mix/after_walkthrough_mix.wav` (55.0 s, 48 kHz 24-bit, **`-14.0 LUFS`**, `<= -1.0 dBTP`) with 5 sample-aligned stems (`stem_ambience_creek.wav`, `stem_birds.wav`, `stem_foley_steps.wav`, `stem_music.wav`, `stem_wind_roomtone.wav`), plus `reset/unreal/import/audio/unreal_hero_36s_16lufs.wav` (36.0 s, **`-16.00 LUFS`**, `-1.59 dBTP`) and `ambience_62s.wav` (`-16.01 LUFS`, `-1.40 dBTP`). Note: `after_walkthrough_mix.wav` has **not** passed the listening review (no `REVIEW.md` `PASS` exists in `reset/unreal/import/audio/`, and `reset/audiomix/HANDOFF.md` notes the listening gate blocks on environmental masking), so it remains a candidate mix pending review rather than an approved final master.
@@ -240,7 +242,7 @@ Honest accounting matters: **`fleet/thru` head did not move (`101a52b40e`)** dur
 
 ### 3.10 Unreal Engine 5.6.1 Build with Parallel Argon Workers per Pod
 - **Old Way:** Single-engine bottleneck in Godot 4 where custom Forward+ water, terrain, and foliage shaders required days of low-level shader debugging to approximate GI and reflections.
-- **Argon Way:** On dedicated L40S pod `thru-unreal-1` (112 vCPU, 503 GB RAM, 48 GB VRAM, $0.79/hr), `pi` + `gemini-4-argon` drove a headless UE 5.6.1 container (`dev-slim-5.6.1`) via Python (`gen.py` + `ue_main.py` + Movie Render Queue) while **12 parallel `pi` + `gemini-4-argon` feeder workers** (4 lanes × 3 workers each, launched at 15:00:57 PT in `UNREAL-SWITCH-LOG.md`) built and exported scene components in parallel:
+- **Argon Way:** On dedicated L40S pod `thru-unreal-1` (112 vCPU, 503 GB RAM, 48 GB VRAM, $0.79/hr), `pi` + `gemini-4-argon` drove a headless UE 5.6.1 container (`dev-slim-5.6.1`) via Python (`gen.py` + `ue_main.py` + Movie Render Queue) while **12 parallel `pi` + `gemini-4-argon` feeder workers** (4 lanes × 3 workers each, launched at 15:00:57 PT in `UNREAL-SWITCH-LOG.md`) were set to build and export scene components in parallel. Their outputs were not wired into the final scene before the cutoff (see section 8, item 1):
   - `unreal-assets-veg` (`w1` conifers, `w2` shrubs, `w3` ground cover/ferns/litter)
   - `unreal-assets-rocks` (`w1` boulders, `w2` wet waterline creek cobbles, `w3` gravel and trail scree)
   - `unreal-landscape-export` (`w1` heightmap, `w2` creek spline and bridge, `w3` 1,528 scatter placements and cameras)
@@ -273,7 +275,9 @@ At 14:41–14:57 PT, we ran a blind 4-camera (`hero_low`, `wet_stones`, `trail`,
 
 ### 4.3 Unreal Engine 5.6.1 Progression (`reset/unreal/JOURNAL.md`, `compare/unreal/LOOP.md` & `PROGRESSION/LOG.md`)
 
-![Unreal Engine 5.6.1 Progression Strip (14:40 to 15:05 PT)](after/unreal-progression-strip.jpg)
+| 14:40 PT (`iter1`) | 15:05 PT (`iter2`) |
+|---|---|
+| ![](progression/1440_hero_low_iter1-first-render.jpg) | ![](progression/1505_hero_low_iter2-dense-route-hiker-pack-trees.jpg) |
 
 1. **`14:21 PT` — `iter0` (`compare/unreal/iter0_broken` — First Real UE Render, Broken):** Terrain and water triangles were wound downward (backface-culled) and auto-exposure clamp was too tight. Fixed grid winding and exposure in 3 minutes.
 2. **`14:24 / 14:40 PT` — `iter1` (`PROGRESSION/1440_hero_low_iter1-first-render.png`, `1440_wide_iter1-first-render.png`):** First working 1920x1080 renders on L40S (`thru-unreal-1`) with Lumen + Virtual Shadow Maps (VSM) and Movie Render Queue (8 temporal samples, ~45 s render after ~1.5 min build). Procedural creek terrain, translucent `Surface-ForwardShading` refractive water with panned normals and depth fade, golden-hour sun. Argon critic (`gemini-4-argon`, 8 images, 10.6k tokens, 19 s) scored **2.0/10 overall** (`hero_low 1.5`, `wet_stones 2.5`, `trail 2.0`, `wide 2.0`), flagging the placeholder cone-stack pines and clay-like procedural boulders.
@@ -342,7 +346,7 @@ Ten `[hackathon]` draft PRs (`#693`–`#702`) package the hackathon lane branche
 
 ## 6. Per-Lane Visual & Audio Results (Verified Relative Paths)
 
-All image and audio paths below are relative to `~/cs-audit/gemini-hackathon` (`H`) and verified on disk.
+All image and audio paths below are relative to the private workspace `~/cs-audit/gemini-hackathon` (`H`), were checked on disk there, and are **not** in this repo. Only the images marked as linked are included here.
 
 ### 6.1 Side-by-Side Engine Comparison (`compare/`)
 - **Godot Current vs. Godot Dry vs. Unreal Engine (Hero Low Angle):**
@@ -354,10 +358,10 @@ All image and audio paths below are relative to `~/cs-audit/gemini-hackathon` (`
   - Wet Stones: `compare/godot-current/wet_stones.jpg` vs. `compare/unreal/wet_stones.jpg`
   - Trail Corridor: `compare/godot-current/trail.jpg` vs. `compare/unreal/trail.jpg`
 
-![Godot Current Hero Low](compare/godot-current/hero_low.jpg)
-![Unreal Iter1 Hero Low](reset/unreal/PROGRESSION/1440_hero_low_iter1-first-render.png)
-![Unreal Iter2 Hero Low (Dense Route, Hiker & Pack Trees)](reset/unreal/PROGRESSION/1505_hero_low_iter2-dense-route-hiker-pack-trees.png)
-![Unreal Iter2 Wide Vista](reset/unreal/PROGRESSION/1505_wide_iter2-dense-route-hiker-pack-trees.png)
+![Godot (top) vs Unreal (bottom) side-by-side](compare/side-by-side.jpg)
+![Unreal Iter1 Hero Low](progression/1440_hero_low_iter1-first-render.jpg)
+![Unreal Iter2 Hero Low (Dense Route, Hiker & Pack Trees)](progression/1505_hero_low_iter2-dense-route-hiker-pack-trees.jpg)
+![Unreal Iter2 Wide Vista](progression/1505_wide_iter2-dense-route-hiker-pack-trees.jpg)
 
 ### 6.2 Unreal Engine 5.6.1 Timestamped Progression (`reset/unreal/PROGRESSION/`)
 - **14:40 PT (`iter1` — First Lumen + VSM Render):**
@@ -378,7 +382,7 @@ All image and audio paths below are relative to `~/cs-audit/gemini-hackathon` (`
 - **Campo Creek (Before vs. Round 5):** `lookdev/gallery/assets/campo_creek_before.jpg` vs. `lookdev/gallery/assets/campo_creek_round5.jpg`
 - **Thousand Island Lake (Before vs. Round 4):** `lookdev/gallery/assets/thousand_island_lake_before.jpg` vs. `lookdev/gallery/assets/thousand_island_lake_round4.jpg`
 
-![Lookdev Before vs After Sheet](lookdev/before-after-sheet.jpg)
+(Lookdev before/after sheet: `lookdev/before-after-sheet.jpg`, workspace only.)
 
 ### 6.5 Evolutionary 3D Modelling & Surface-Feel PBR Closeups (`model2/`, `reset/textures/`, `handoffs/playtest/`)
 - **`model2` Creek Bed Evolution (Round 1 vs. Round 6 Scored Contact Sheets):** `model2/creek/r01/contact-scored.png` vs. `model2/creek/r06/contact-scored.png`
@@ -389,23 +393,23 @@ All image and audio paths below are relative to `~/cs-audit/gemini-hackathon` (`
   - Flat White Ribbon Creek (`00:10`): `handoffs/playtest/before-screens/flat_white_creek_f0300.png`
   - Sideways 90° Hiker Crab-Walk (`00:06`): `handoffs/playtest/before-screens/hiker_facing_right_f0180.png`
 
-![Model2 Creek Round 6 Scored Contact Sheet](model2/creek/r06/contact-scored.png)
-![Decomposed Granite Dusty Footprint Closeup](reset/textures/v3-remote-output/decomposed_granite/renders/dusty_footprint.png)
+(Model2 creek round 6 contact sheet: `model2/creek/r06/contact-scored.png`, workspace only.)
+(Decomposed granite footprint closeup: `reset/textures/v3-remote-output/decomposed_granite/renders/dusty_footprint.png`, workspace only.)
 
-### 6.6 Audio Deliverables & Stems (Relative Links)
-- **Unreal AFTER Candidate Walkthrough Mix — Pending Listening Review (55.0 s, 48 kHz 24-bit, `-14.0 LUFS`; not yet cleared by `REVIEW.md` listening gate due to environmental masking):** [reset/unreal/import/audio/mix/after_walkthrough_mix.wav](reset/unreal/import/audio/mix/after_walkthrough_mix.wav)
-  - Stem — Sierra Creek Ambience & Bridge Surge: [reset/unreal/import/audio/mix/stem_ambience_creek.wav](reset/unreal/import/audio/mix/stem_ambience_creek.wav)
-  - Stem — Sierra Nevada Birds (7 species): [reset/unreal/import/audio/mix/stem_birds.wav](reset/unreal/import/audio/mix/stem_birds.wav)
-  - Stem — Hiker Foley, Gravel/Wet-Stone Steps & Bridge Creaks: [reset/unreal/import/audio/mix/stem_foley_steps.wav](reset/unreal/import/audio/mix/stem_foley_steps.wav)
-  - Stem — 1990s Americana Lyria Score: [reset/unreal/import/audio/mix/stem_music.wav](reset/unreal/import/audio/mix/stem_music.wav)
-  - Stem — Mountain Room Tone & Pine Wind: [reset/unreal/import/audio/mix/stem_wind_roomtone.wav](reset/unreal/import/audio/mix/stem_wind_roomtone.wav)
-- **Unreal Hero Creek 36.0 s Master (`-16.00 LUFS`, `-1.59 dBTP`):** [reset/unreal/import/audio/unreal_hero_36s_16lufs.wav](reset/unreal/import/audio/unreal_hero_36s_16lufs.wav)
-- **Unreal 62.0 s Ambience Master (`-16.01 LUFS`, `-1.40 dBTP`):** [reset/unreal/import/audio/ambience_62s.wav](reset/unreal/import/audio/ambience_62s.wav)
-- **Sierra 2,348 m Bird Bed Loop (60.0 s seamless stereo, `-18.8 LUFS`):** [reset/unreal/import/audio/birds/birds_hero_bed_loop.wav](reset/unreal/import/audio/birds/birds_hero_bed_loop.wav)
-- **Wooden Footbridge Boot Steps & Timber Creaks Demo:** [reset/unreal/import/audio/foley/bridge_walk_demo.wav](reset/unreal/import/audio/foley/bridge_walk_demo.wav)
-- **Godot Hero Creek 36.0 s Mix (`-16.0 LUFS`):** [reset/audiomix/hero_mix.wav](reset/audiomix/hero_mix.wav)
-- **Godot Campo Walkthrough Mix:** [reset/audiomix/walkthrough_mix.wav](reset/audiomix/walkthrough_mix.wav)
-- **Audio Candidate Pack 182-Second Top-12 Sampler:** [audio/sampler.mp3](audio/sampler.mp3)
+### 6.6 Audio Deliverables & Stems (workspace paths, not in this repo)
+- **Unreal AFTER Candidate Walkthrough Mix — Pending Listening Review (55.0 s, 48 kHz 24-bit, `-14.0 LUFS`; not yet cleared by `REVIEW.md` listening gate due to environmental masking):** `reset/unreal/import/audio/mix/after_walkthrough_mix.wav`
+  - Stem — Sierra Creek Ambience & Bridge Surge: `reset/unreal/import/audio/mix/stem_ambience_creek.wav`
+  - Stem — Sierra Nevada Birds (7 species): `reset/unreal/import/audio/mix/stem_birds.wav`
+  - Stem — Hiker Foley, Gravel/Wet-Stone Steps & Bridge Creaks: `reset/unreal/import/audio/mix/stem_foley_steps.wav`
+  - Stem — 1990s Americana Lyria Score: `reset/unreal/import/audio/mix/stem_music.wav`
+  - Stem — Mountain Room Tone & Pine Wind: `reset/unreal/import/audio/mix/stem_wind_roomtone.wav`
+- **Unreal Hero Creek 36.0 s Master (`-16.00 LUFS`, `-1.59 dBTP`):** `reset/unreal/import/audio/unreal_hero_36s_16lufs.wav`
+- **Unreal 62.0 s Ambience Master (`-16.01 LUFS`, `-1.40 dBTP`):** `reset/unreal/import/audio/ambience_62s.wav`
+- **Sierra 2,348 m Bird Bed Loop (60.0 s seamless stereo, `-18.8 LUFS`):** `reset/unreal/import/audio/birds/birds_hero_bed_loop.wav`
+- **Wooden Footbridge Boot Steps & Timber Creaks Demo:** `reset/unreal/import/audio/foley/bridge_walk_demo.wav`
+- **Godot Hero Creek 36.0 s Mix (`-16.0 LUFS`):** `reset/audiomix/hero_mix.wav`
+- **Godot Campo Walkthrough Mix:** `reset/audiomix/walkthrough_mix.wav`
+- **Audio Candidate Pack 182-Second Top-12 Sampler:** `audio/sampler.mp3`
 
 ---
 

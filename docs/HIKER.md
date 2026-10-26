@@ -1,5 +1,7 @@
 # HIKER asset fixes (pod lane), 2026-10-25
 
+> Post-deadline work. None of this is in the submitted video, which is the no-hiker cut `final_v5_nohiker.mp4` (see [`VIDEO.md`](VIDEO.md)).
+
 Scene: no-hiker bridge/creek walk frames 1500-2400 + hiker. Pods u1 (1838), u2 (12181), u3 (1260), u6 (1673).
 Scripts: `pipeline/pod-assetfix/` (gen.py, ue_main.py, params.json, passhk.sh, hkfull.sh, pass2.sh, run json).
 

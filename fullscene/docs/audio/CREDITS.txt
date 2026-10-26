@@ -1,0 +1,8 @@
+wind.wav: Joseph SARDIN, https://bigsoundbank.com/forest-wind-in-the-trees-s0904.html, CC0-1.0; Decoded to mono PCM 48 kHz, maximum 60 seconds; no generation
+insects.wav: Joseph SARDIN, https://bigsoundbank.com/field-cricket-s1020.html, CC0-1.0; Decoded to mono PCM 48 kHz, maximum 60 seconds; no generation
+gravel.wav: Joseph SARDIN, https://bigsoundbank.com/footsteps-on-gravels-2-s1117.html, CC0-1.0; Decoded to mono PCM 48 kHz, maximum 60 seconds; no generation
+granite.wav: Joseph SARDIN, https://bigsoundbank.com/step-shoe-on-stone-staircase-s0606.html, CC0-1.0; Decoded to mono PCM 48 kHz, maximum 60 seconds; no generation
+wood.wav: Joseph SARDIN, https://bigsoundbank.com/walk-on-pontoon-s1845.html, CC0-1.0; Decoded to mono PCM 48 kHz, maximum 60 seconds; no generation
+creek.wav: Antoinemax, https://opengameart.org/content/nature-sounds-pack, CC-BY-4.0; Decoded to mono PCM 48 kHz, maximum 60 seconds; no generation
+dirt.wav: Antoinemax, https://opengameart.org/content/nature-sounds-pack, CC-BY-4.0; Decoded to mono PCM 48 kHz, maximum 60 seconds; no generation
+bird.wav: Ben, https://www.inaturalist.org/observations/408572176, CC0-1.0; Decoded to mono PCM 48 kHz, maximum 60 seconds; no generation

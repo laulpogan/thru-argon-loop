@@ -1,0 +1,60 @@
+{
+  "schema": "thru.texture-manifest/v1",
+  "source_modified": false,
+  "assets": [
+    {
+      "source": "/home/dellpromax/fleet/tb-nb/textures/jeffrey_ponderosa_bark/jeffrey_ponderosa_bark_1024_v01.png",
+      "file": "T_NB_Jeffrey_D.png",
+      "sha256": "32f68de457fa5f3e8df307628acc8de9e2aa5febf843608c9d7744ee71921d17",
+      "origin": "AI-generated (Nano Banana Pro)",
+      "usage": "Jeffrey trunk; mandatory replacement",
+      "normal_map": "No generated normal supplied; existing terrain detail normals retained, Jeffrey normal strength disabled",
+      "license": "User supplied; AI-generated; no third-party license inferred"
+    },
+    {
+      "source": "/home/dellpromax/fleet/tb-nb/textures/sierra_granite/sierra_granite_1024_v01.png",
+      "file": "T_NB_Granite_D.png",
+      "sha256": "4213fd362d91a19e9a512c92524485fd9b4eea2a90d4089943ad8f60a811aefb",
+      "origin": "AI-generated (Nano Banana Pro)",
+      "usage": "single world-aligned boulder material",
+      "normal_map": "No generated normal supplied; existing terrain detail normals retained, Jeffrey normal strength disabled",
+      "license": "User supplied; AI-generated; no third-party license inferred"
+    },
+    {
+      "source": "/home/dellpromax/fleet/tb-nb/textures/dg_trail_tread/dg_trail_tread_1024_v01.png",
+      "file": "T_NB_Trail_D.png",
+      "sha256": "94d4ff2a27099aed1078a91367a6a2ac9402fa2b74fff50a6cac59424dc54ff2",
+      "origin": "AI-generated (Nano Banana Pro)",
+      "usage": "trail tread",
+      "normal_map": "No generated normal supplied; existing terrain detail normals retained, Jeffrey normal strength disabled",
+      "license": "User supplied; AI-generated; no third-party license inferred"
+    },
+    {
+      "source": "/home/dellpromax/fleet/tb-nb/textures/wet_creek_cobbles/wet_creek_cobbles_1024_v001.png",
+      "file": "T_NB_Cobbles_D.png",
+      "sha256": "ef163a0be5aa51ccbe670839decd121c5814bfed5b0a87f98ae05b0b6f6adbf4",
+      "origin": "AI-generated (Nano Banana Pro)",
+      "usage": "creek bed",
+      "normal_map": "No generated normal supplied; existing terrain detail normals retained, Jeffrey normal strength disabled",
+      "license": "User supplied; AI-generated; no third-party license inferred"
+    },
+    {
+      "source": "/home/dellpromax/fleet/tb-nb/textures/pine_needle_duff/pine_needle_duff_1024_v01.png",
+      "file": "T_NB_Duff_D.png",
+      "sha256": "1293af15793a60ab6d49227ab16ecee1c466f0f08a512af4df7912db3a729628",
+      "origin": "AI-generated (Nano Banana Pro)",
+      "usage": "forest ground",
+      "normal_map": "No generated normal supplied; existing terrain detail normals retained, Jeffrey normal strength disabled",
+      "license": "User supplied; AI-generated; no third-party license inferred"
+    },
+    {
+      "source": "/home/dellpromax/fleet/tb-nb/textures/sedge_meadow_ground/sedge_meadow_ground_1024_v01.png",
+      "file": "T_NB_Meadow_D.png",
+      "sha256": "8a33ccafb1236f45346ccc227f1d3c09a78ed28e6b80b9c2cb434bdc940fe81b",
+      "origin": "AI-generated (Nano Banana Pro)",
+      "usage": "meadow ground",
+      "normal_map": "No generated normal supplied; existing terrain detail normals retained, Jeffrey normal strength disabled",
+      "license": "User supplied; AI-generated; no third-party license inferred"
+    }
+  ]
+}

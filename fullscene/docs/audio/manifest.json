@@ -1,0 +1,116 @@
+{
+  "schema": "thru.audio-manifest/v1",
+  "generated_audio": false,
+  "assets": [
+    {
+      "file": "wind.wav",
+      "role": "wind",
+      "source_url": "https://bigsoundbank.com/forest-wind-in-the-trees-s0904.html",
+      "license": "CC0-1.0",
+      "author": "Joseph SARDIN",
+      "attribution_needed": false,
+      "origin": "Real recording",
+      "notes": "Recorded forest in Rambouillet, France; conifer species unverified.",
+      "changes": "Decoded to mono PCM 48 kHz, maximum 60 seconds; no generation",
+      "duration_s": 60.0,
+      "sha256": "8e2356460a9e657cc226b6e8e014ef15e35f373dc81c2df8bd696ac132c9f639"
+    },
+    {
+      "file": "insects.wav",
+      "role": "insects",
+      "source_url": "https://bigsoundbank.com/field-cricket-s1020.html",
+      "license": "CC0-1.0",
+      "author": "Joseph SARDIN",
+      "attribution_needed": false,
+      "origin": "Real recording",
+      "notes": "French field cricket; ambience stand-in, not verified Sierra species.",
+      "changes": "Decoded to mono PCM 48 kHz, maximum 60 seconds; no generation",
+      "duration_s": 36.763646,
+      "sha256": "6023f3827d6845ae4b2d5d19068174900ea96417f0b3657aca780f8ee2675831"
+    },
+    {
+      "file": "gravel.wav",
+      "role": "gravel",
+      "source_url": "https://bigsoundbank.com/footsteps-on-gravels-2-s1117.html",
+      "license": "CC0-1.0",
+      "author": "Joseph SARDIN",
+      "attribution_needed": false,
+      "origin": "Real recording",
+      "notes": "Real studio foley; gravel.",
+      "changes": "Decoded to mono PCM 48 kHz, maximum 60 seconds; no generation",
+      "duration_s": 60.0,
+      "sha256": "667f4cb7f2810eaa089bd8dade8e731dbd9f2591c35d50ea2c0a70d8cfcd2263"
+    },
+    {
+      "file": "granite.wav",
+      "role": "granite",
+      "source_url": "https://bigsoundbank.com/step-shoe-on-stone-staircase-s0606.html",
+      "license": "CC0-1.0",
+      "author": "Joseph SARDIN",
+      "attribution_needed": false,
+      "origin": "Real recording",
+      "notes": "Stone staircase; granite stand-in, stone type unverified.",
+      "changes": "Decoded to mono PCM 48 kHz, maximum 60 seconds; no generation",
+      "duration_s": 26.544,
+      "sha256": "ae76a9756bcf8b00a2775e6c0531dd26e0308b249d94f24f2359aa0b944cf7a1"
+    },
+    {
+      "file": "wood.wav",
+      "role": "wood",
+      "source_url": "https://bigsoundbank.com/walk-on-pontoon-s1845.html",
+      "license": "CC0-1.0",
+      "author": "Joseph SARDIN",
+      "attribution_needed": false,
+      "origin": "Real recording",
+      "notes": "Outdoor wooden pontoon, bridge surface proxy.",
+      "changes": "Decoded to mono PCM 48 kHz, maximum 60 seconds; no generation",
+      "duration_s": 6.159979,
+      "sha256": "376f496187def13d7535d56f2b2ae5587682877cd5eeee029ac33635a69af169"
+    },
+    {
+      "file": "creek.wav",
+      "role": "creek",
+      "source_url": "https://opengameart.org/content/nature-sounds-pack",
+      "license": "CC-BY-4.0",
+      "author": "Antoinemax",
+      "attribution_needed": true,
+      "origin": "Real recording",
+      "notes": "Natural stream field recording, Antoinemax.",
+      "changes": "Decoded to mono PCM 48 kHz, maximum 60 seconds; no generation",
+      "duration_s": 1.5,
+      "sha256": "971bd0e6ea9b66d7eb13d83dedf1bc0a5a464213b838cfa9a6752e224e40243b"
+    },
+    {
+      "file": "dirt.wav",
+      "role": "dirt",
+      "source_url": "https://opengameart.org/content/nature-sounds-pack",
+      "license": "CC-BY-4.0",
+      "author": "Antoinemax",
+      "attribution_needed": true,
+      "origin": "Real recording",
+      "notes": "Reused licensed Godot asset. Grass/duff footstep is dirt proxy.",
+      "changes": "Decoded to mono PCM 48 kHz, maximum 60 seconds; no generation",
+      "duration_s": 0.238854,
+      "sha256": "a4a0c30807a3c8b6cb3d4bfd9a88326d276a18fbda12fc16f8f80243a91b12de"
+    },
+    {
+      "file": "bird.wav",
+      "role": "bird",
+      "source_url": "https://www.inaturalist.org/observations/408572176",
+      "license": "CC0-1.0",
+      "author": "Ben",
+      "attribution_needed": false,
+      "origin": "Real recording",
+      "notes": "Source-identified Steller\u2019s jay, Seattle WA; no independent species validation.",
+      "changes": "Decoded to mono PCM 48 kHz, maximum 60 seconds; no generation",
+      "duration_s": 5.024,
+      "sha256": "fee3843a476aeb964695cade4cea91697d8ce5ed8946c0af0cb93b62ffb7b262"
+    }
+  ],
+  "source_decisions": {
+    "Sonniss": "Primary license checked; multi-GB bundles avoided because direct licensed recordings cover categories.",
+    "Freesound": "Login required; skipped without signup.",
+    "Pixabay": "Download endpoints returned 403; skipped after two attempts.",
+    "Lyria": "Not used; real recordings cover requested roles with stated geographic/surface proxies."
+  }
+}

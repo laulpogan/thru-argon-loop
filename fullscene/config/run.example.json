@@ -1,0 +1,39 @@
+{
+  "build": true,
+  "reimport": true,
+  "out": "/workspace/fullscene/out/final",
+  "shots": [
+    "hero_low",
+    "hiker",
+    "trail",
+    "wide",
+    "butterflies",
+    "critters"
+  ],
+  "walk": true,
+  "res": [
+    1280,
+    720
+  ],
+  "temporal": 4,
+  "trail_shade": 0.75,
+  "grass_cull": 18000,
+  "no_shaft_bloom": true,
+  "sun_contact": true,
+  "fol_grade": {
+    "jeffrey_leaf": {
+      "Tint": [
+        0.72,
+        0.85,
+        0.7
+      ],
+      "Transmission": 0.08
+    },
+    "red_fir_leaf": {
+      "Transmission": 0.15
+    },
+    "white_fir_leaf": {
+      "Transmission": 0.15
+    }
+  }
+}

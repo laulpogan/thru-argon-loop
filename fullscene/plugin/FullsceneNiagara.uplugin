@@ -1,0 +1,1 @@
+{"FileVersion":3,"Version":1,"VersionName":"1","FriendlyName":"Fullscene Niagara authoring","CanContainContent":false,"Modules":[{"Name":"FullsceneNiagara","Type":"Editor","LoadingPhase":"Default"}],"Plugins":[{"Name":"Niagara","Enabled":true}]}

@@ -14,7 +14,15 @@ See `MODULE_MAP.md`, which maps each GDScript file to its Unreal class, with dep
 ## Ported so far
 | Module | GDScript | gcc | clang | tests |
 |---|---|---|---|---|
-| skeleton: rng, data_source | (new) | builds, -Werror | builds, -Werror | 4 cases / 10155 assertions pass |
+| skeleton: rng, data_source | (new) | builds, -Werror | builds, -Werror | 4 cases (10155 assertions, mostly RNG sampling loops) |
+| core_calendar | trail_calendar.gd | builds, no warnings | builds, no warnings | 6 cases / 82 assertions |
+| celestial_sim | celestial_math.gd, celestial_ephemeris.gd | builds, no warnings | builds, no warnings | 10 cases / 122 assertions |
+
+Total at this commit: **20 test cases, 10359 assertions, 0 failures under both g++ 11.4 and clang** (-Wall -Wextra -Werror). I re-ran this myself from a clean export of the files at this commit and read the full output (Oct 25 2026, 9:51 PM PT).
+The UE 5.6 wrapper sources under `Unreal/` have **not been compiled yet**. They need UnrealHeaderTool and a .uproject, and no UE 5.6 pod is set up.
+
+## Queued or in progress
+trail_season_environment, weather_sim, wildfire_smoke, trail_phenology_ecology, hiker_metabolism, hiker_rhythm_fatigue, hiker_cohort_bubble, town_hours_schedule, town_resupply_logistics, town_commerce_services, trail_registers_journal, encounters_promises, campaign_journey_progression, film_camera_logic, campaign_parcels_logic, campaign_encounter_tasks, and review_fix_r1 (the review round 1 fixes). Every worker hits Gemini 429 quota errors, so progress is slow.
 
 ## Build
 ```
@@ -26,4 +34,4 @@ cmake -S ue-port -B build-clang -DCMAKE_CXX_COMPILER=clang++ && cmake --build bu
 The shared world-pack at `/mnt/models/thru-worldpack/v2/` did not exist as of Oct 25 2026, 9:15 PM PT. Tables load through the `thru::DataSource` interface, so that format can be added later.
 
 ## Remaining effort
-[TBD: updated as modules land]
+3 of 19 modules (foundations included) are ported and tested. 16 remain, plus a UE compile check of the wrappers. At the current quota-bound pace of about 1 module per 20-40 minutes with 6 workers, that is several more hours. [TBD: verify once quota frees]

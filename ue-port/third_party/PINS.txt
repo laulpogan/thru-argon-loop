@@ -1,0 +1,2 @@
+doctest v2.4.11 MIT sha256 44faa038e9c3f9728efbda143748d01124ea0a27f4bf78f35a15d8fab2e039fb
+nlohmann/json v3.11.3 MIT sha256 9bea4c8066ef4a1c206b2be5a36302f8926f7fdc6087af5d20b417d0cf103ea6
